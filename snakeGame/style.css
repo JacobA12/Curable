@@ -1,0 +1,44 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+.score {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.scoreNum {
+    position: absolute;
+    top: 1.3rem;
+    left: 10rem;
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+  }
+
+.bestScoreNum {
+    position: absolute;
+    top: 1.7rem;
+    right: 43rem;
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+  }
+
+.bestScore {
+    position: absolute;
+    top: 1.5rem;
+    right: 45rem;
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+  }
