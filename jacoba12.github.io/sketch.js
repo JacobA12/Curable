@@ -1,4 +1,4 @@
-const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random"; //pulls a random quote from the API
+const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random"; //pulls a random quote from the API
 const quoteDisplayElement = document.getElementById("quoteDisplay");
 const quoteInputElement = document.getElementById("quoteInput");
 const timerElement = document.getElementById("timer");
@@ -29,7 +29,6 @@ function preload() {
 }
 function setup() {
   soundFormats("mp3", "ogg", "wav");
-  victorySound.play();
 }
 
 quoteInputElement.addEventListener("input", () => {  //whenever there is an event in the quoteInputElement

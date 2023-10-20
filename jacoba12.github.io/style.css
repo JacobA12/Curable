@@ -86,6 +86,14 @@ body,
   font-weight: bold;
 }
 
+.tutorial {
+  position: absolute;
+  bottom: 8rem;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
 .quote-display {
   margin-bottom: 1rem;
   margin-left: calc(1rem + 2px);
