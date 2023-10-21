@@ -1,7 +1,10 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
+
+
 
 canvas {
   display: block;
@@ -9,36 +12,61 @@ canvas {
 
 .score {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-size: 3rem;
-  color: white;
+  top: calc(50vh - 300px - 0.5rem); /* Adjust as needed */
+  left: calc(50vw - 460px + 1rem);
+  font-size: 2rem;
+  color: black;
   font-weight: bold;
 }
 
 .scoreNum {
-    position: absolute;
-    top: 1.3rem;
-    left: 10rem;
-    font-size: 3rem;
-    color: white;
-    font-weight: bold;
-  }
+  position: absolute;
+  top: calc(50vh - 298px - 0.5rem); /* Adjust as needed */
+  left: calc(50vw - 350px + 1rem);
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+}
 
 .bestScoreNum {
-    position: absolute;
-    top: 1.7rem;
-    right: 43rem;
-    font-size: 3rem;
-    color: white;
-    font-weight: bold;
-  }
+  position: absolute;
+  top: calc(50vh - 257px - 0.5rem); /* Adjust as needed */
+  left: calc(50vw - 350px + 1rem);
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+}
 
 .bestScore {
-    position: absolute;
-    top: 1.5rem;
-    right: 45rem;
-    font-size: 3rem;
-    color: white;
-    font-weight: bold;
-  }
+  position: absolute;
+  top: calc(50vh - 260px - 0.5rem); /* Adjust as needed */
+  left: calc(50vw - 460px + 1rem);
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+}
+.level {
+  position: absolute;
+  bottom: calc(50vh - 257px - 2rem); /* Adjust as needed */
+  left: calc(50vw - 465px + 1rem);
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+}
+.levelNum {
+  position: absolute;
+  bottom: calc(50vh - 257px - 2rem); /* Adjust as needed */
+  left: calc(50vw - 375px + 1rem);
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+}
+
+.tutorial {
+  position: absolute;
+  top: calc(50vh - 260px - 2.5rem); /* Adjust as needed */
+  right: calc(50vw - 460px + 2rem);
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+}

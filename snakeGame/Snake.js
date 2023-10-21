@@ -9,6 +9,7 @@ class Snake {
 
     this.eat = function (pos) {
       let d = dist(this.x, this.y, pos.x, pos.y);
+
       if (d < 1) {
         this.total++;
         scoreDisplayElement.innerText = this.total;
@@ -27,11 +28,32 @@ class Snake {
     };
 
     this.death = function () {
+      for (let obstacle of obstacles) {
+        let d = dist(this.x, this.y, obstacle.x, obstacle.y);
+        if (
+          this.x < obstacle.x + scl &&
+          this.x + scl > obstacle.x &&
+          this.y < obstacle.y + scl &&
+          this.y + scl > obstacle.y
+        ) {
+          console.log("Hit an obstacle!");
+          // Handle game over here...
+          nextLevel()
+          scoreDisplayElement.innerText = 0;
+          tryAgainSound2.play();
+          this.x = width / 2;
+          this.y = height / 2;
+          this.total = 0;
+          this.tail = [];
+        }
+      }
+
       for (let i = 0; i < this.tail.length; i++) {
         let pos = this.tail[i];
         let d = dist(this.x, this.y, pos.x, pos.y);
         if (d < 1) {
           console.log("starting over");
+          nextLevel();
           scoreDisplayElement.innerText = 0;
           tryAgainSound2.play();
           this.x = width / 2;
