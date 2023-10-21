@@ -1,7 +1,7 @@
 class Snake {
   constructor() {
-    this.x = width / 2;
-    this.y = height / 2;
+    this.x = 280;
+    this.y = 40;
     this.xspeed = 0;
     this.yspeed = 0;
     this.total = 0;
@@ -45,8 +45,8 @@ class Snake {
           nextLevel();
           scoreDisplayElement.innerText = 0;
           tryAgainSound2.play();
-          this.x = width / 2;
-          this.y = height / 2;
+          this.x = 280;
+          this.y = 40;
           this.total = 0;
           this.xspeed = 0;
           this.yspeed = 0;
@@ -62,8 +62,8 @@ class Snake {
           nextLevel();
           scoreDisplayElement.innerText = 0;
           tryAgainSound2.play();
-          this.x = width / 2;
-          this.y = height / 2;
+          this.x = 280;
+          this.y = 40;
           this.total = 0;
           this.tail = [];
         }
