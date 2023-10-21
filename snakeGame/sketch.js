@@ -3,7 +3,7 @@ const bestScoreDisplayElement = document.getElementById("bestScoreNum");
 const levelNumDisplayElement = document.getElementById("levelNum");
 let snake;
 let obstacles = [];
-let currentLevel = 1;
+let currentLevel = 4;
 let scl = 20;
 
 // Add as many as you want
@@ -34,8 +34,14 @@ function setup() {
 function pickLocation() {
   let cols = floor(width / scl);
   let rows = floor(height / scl);
+  let foodX, foodY;
 
-  food = createVector(floor(random(cols)), floor(random(rows)));
+  do {
+    foodX = floor(random(cols));
+    foodY = floor(random(rows));
+  } while (!isPositionFree(foodX * scl, foodY * scl));
+
+  food = createVector(foodX, foodY);
   food.mult(scl);
 }
 
@@ -104,45 +110,58 @@ function drawLevel() {
   } else if (currentLevel === 2) {
     for (let index = 0; index < 23; index++) {
       obstacles.push(new Obstacle(460 - 20 * index, 100));
-      obstacles.push(new Obstacle(480, 200 + 20 *index))
-      obstacles.push(new Obstacle(160 - 20 * index, 340))
-      obstacles.push(new Obstacle(300, 340 + 20 * (index % 10)))
+      obstacles.push(new Obstacle(480, 200 + 20 * index));
+      obstacles.push(new Obstacle(160 - 20 * index, 340));
+      obstacles.push(new Obstacle(300, 340 + 20 * (index % 10)));
     }
   } else if (currentLevel === 3) {
     for (let index = 0; index < 28; index++) {
       obstacles.push(new Obstacle(560 - 20 * index, 560));
       obstacles.push(new Obstacle(20, 20 + 20 * (index % 25)));
-      obstacles.push(new Obstacle(200,200 + 20 % (index)))
-      obstacles.push(new Obstacle(200,280 + 20 % (index)))
-      obstacles.push(new Obstacle(200,360 + 20 % (index)))
-      obstacles.push(new Obstacle(300,200 + 20 % (index)))
-      obstacles.push(new Obstacle(300,280 + 20 % (index)))
-      obstacles.push(new Obstacle(300,360 + 20 % (index)))
-      obstacles.push(new Obstacle(400,200 + 20 % (index)))
-      obstacles.push(new Obstacle(400,280 + 20 % (index)))
-      obstacles.push(new Obstacle(400,360 + 20 % (index)))
+      obstacles.push(new Obstacle(200, 200 + (20 % index)));
+      obstacles.push(new Obstacle(200, 280 + (20 % index)));
+      obstacles.push(new Obstacle(200, 360 + (20 % index)));
+      obstacles.push(new Obstacle(300, 200 + (20 % index)));
+      obstacles.push(new Obstacle(300, 280 + (20 % index)));
+      obstacles.push(new Obstacle(300, 360 + (20 % index)));
+      obstacles.push(new Obstacle(400, 200 + (20 % index)));
+      obstacles.push(new Obstacle(400, 280 + (20 % index)));
+      obstacles.push(new Obstacle(400, 360 + (20 % index)));
       obstacles.push(new Obstacle(560, 20 + 20 * (index % 25)));
     }
   } else if (currentLevel === 4) {
     for (let index = 0; index < 28; index++) {
       obstacles.push(new Obstacle(560 - 20 * index, 560));
       obstacles.push(new Obstacle(20, 20 + 20 * (index % 25)));
-      obstacles.push(new Obstacle(200,140 + 20 % (index)))
-      obstacles.push(new Obstacle(200,240 + 20 % (index)))
-      obstacles.push(new Obstacle(200,340 + 20 % (index)))
-      obstacles.push(new Obstacle(300,140 + 20 % (index)))
-      obstacles.push(new Obstacle(300,240 + 20 % (index)))
-      obstacles.push(new Obstacle(300,340 + 20 % (index)))
-      obstacles.push(new Obstacle(400,140 + 20 % (index)))
-      obstacles.push(new Obstacle(400,240 + 20 % (index)))
-      obstacles.push(new Obstacle(400,340 + 20 % (index)))
+      obstacles.push(new Obstacle(200, 140 + (20 % index)));
+      obstacles.push(new Obstacle(200, 240 + (20 % index)));
+      obstacles.push(new Obstacle(200, 340 + (20 % index)));
+      obstacles.push(new Obstacle(300, 140 + (20 % index)));
+      obstacles.push(new Obstacle(300, 240 + (20 % index)));
+      obstacles.push(new Obstacle(300, 340 + (20 % index)));
+      obstacles.push(new Obstacle(400, 140 + (20 % index)));
+      obstacles.push(new Obstacle(400, 240 + (20 % index)));
+      obstacles.push(new Obstacle(400, 340 + (20 % index)));
       obstacles.push(new Obstacle(560, 20 + 20 * (index % 25)));
     }
     for (let index = 0; index < 20; index++) {
-      obstacles.push(new Obstacle(80, 60 + 20 * index))
-      obstacles.push(new Obstacle(500, 60 + 20 * index))
-      obstacles.push(new Obstacle(480 - 20 * index, 20))
-      obstacles.push(new Obstacle(480 - 20 * index, 480))
+      obstacles.push(new Obstacle(80, 60 + 20 * index));
+      obstacles.push(new Obstacle(500, 60 + 20 * index));
+      obstacles.push(new Obstacle(480 - 20 * index, 20));
+      obstacles.push(new Obstacle(480 - 20 * index, 480));
     }
   }
+}
+function isPositionFree(x, y) {
+  for (let obstacle of obstacles) {
+    if (
+      x < obstacle.x + scl &&
+      x + scl > obstacle.x &&
+      y < obstacle.y + scl &&
+      y + scl > obstacle.y
+    ) {
+      return false;
+    }
+  }
+  return true;
 }

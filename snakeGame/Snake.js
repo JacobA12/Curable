@@ -2,8 +2,8 @@ class Snake {
   constructor() {
     this.x = width / 2;
     this.y = height / 2;
-    this.xspeed = 1;
-    this.yspeed = 1;
+    this.xspeed = 0;
+    this.yspeed = 0;
     this.total = 0;
     this.tail = [];
 
@@ -23,6 +23,10 @@ class Snake {
     };
 
     this.dir = function (x, y) {
+      // Prevent the snake from moving in the opposite direction
+      if (x === -this.xspeed && y === -this.yspeed) {
+        return;
+      }
       this.xspeed = x;
       this.yspeed = y;
     };
@@ -38,12 +42,14 @@ class Snake {
         ) {
           console.log("Hit an obstacle!");
           // Handle game over here...
-          nextLevel()
+          nextLevel();
           scoreDisplayElement.innerText = 0;
           tryAgainSound2.play();
           this.x = width / 2;
           this.y = height / 2;
           this.total = 0;
+          this.xspeed = 0;
+          this.yspeed = 0;
           this.tail = [];
         }
       }
