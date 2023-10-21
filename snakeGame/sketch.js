@@ -12,6 +12,7 @@ let victorySound;
 let victorySound2;
 let tryAgainSound;
 let tryAgainSound2;
+let moveSound;
 
 function preload() {
   victorySound = loadSound("assets/victorySound.wav");
@@ -43,10 +44,6 @@ function pickLocation() {
 
   food = createVector(foodX, foodY);
   food.mult(scl);
-}
-
-function mousePressed() {
-  s.total++;
 }
 
 function draw() {
