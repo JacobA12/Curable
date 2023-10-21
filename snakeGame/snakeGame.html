@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Sketch</title>
+    <title>Snake Game</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
 
@@ -17,8 +17,36 @@
     <div class="bestScore" id="bestScore">Best:</div>
     <div class="scoreNum" id="scoreNum">0</div>
     <div class="bestScoreNum" id="bestScoreNum">0</div>
-
+    <div class="level" id="level">Level:</div>
+    <div class="levelNum" id="levelNum">1</div>
+    <div class="tutorial" id="tutorial">
+      Level 1: Score 15<br>
+      Level 2: Score 20<br>
+      Level 3: Score 25<br>
+      Level 4: Score 40<br>
+    </div>
+    <style>
+      body {
+        background-color: #b5651e; /* Replace #yourColor with the color you want */
+      }
+    </style>
+    
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+    
+      #defaultCanvas0 { /* This is the default id of the canvas created by p5.js */
+        border: 1px solid black; /* Optional: adds a border around the canvas */
+      }
+    </style>
+    
     <script src="sketch.js"></script>
     <script src="Snake.js"></script>
+    <script src="Obstacle.js"></script>
   </body>
 </html>
