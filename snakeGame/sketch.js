@@ -19,6 +19,7 @@ function setup() {
   soundFormats("mp3", "ogg", "wav");
   createCanvas(600, 600);
   s = new Snake();
+  obs = new Obstacle();
   frameRate(10);
   pickLocation();
 }
@@ -27,9 +28,25 @@ function pickLocation() {
   let cols = floor(width / scl);
   let rows = floor(height / scl);
 
-  food = createVector(floor(random(cols)), floor(random(rows)));
-  food.mult(scl);
+  while(true) {
+    food = createVector(floor(random(cols)), floor(random(rows)));
+    food.mult(scl);
+
+    let isOnObstacle = false;
+    for(let i = 0; i < obstacles.length; i++) {
+      if(food.x >= obstacles[i].x && food.x <= obstacles[i].x + obstacles[i].width &&
+         food.y >= obstacles[i].y && food.y <= obstacles[i].y + obstacles[i].length) {
+        isOnObstacle = true;
+        break;
+      }
+    }
+
+    if(!isOnObstacle) {
+      break;
+    }
+  }
 }
+
 
 function mousePressed() {
   s.total++;
