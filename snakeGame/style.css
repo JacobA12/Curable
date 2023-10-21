@@ -65,7 +65,7 @@ canvas {
 .tutorial {
   position: absolute;
   top: calc(50vh - 260px - 2.5rem); /* Adjust as needed */
-  right: calc(50vw - 460px + 2rem);
+  right: calc(50vw - 595px + 1rem);
   font-size: 1rem;
   color: black;
   font-weight: bold;

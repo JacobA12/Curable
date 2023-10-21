@@ -28,7 +28,6 @@ function setup() {
   s = new Snake();
   drawLevel();
   nextLevel();
-
   frameRate(10);
   pickLocation();
 }
