@@ -19,6 +19,7 @@ function preload() {
   victorySound2 = loadSound("assets/victorySound2.wav");
   tryAgainSound = loadSound("assets/tryAgainSound.wav");
   tryAgainSound2 = loadSound("assets/tryAgainSound2.wav");
+  moveSound = loadSound("assets/move.mp3");
 }
 
 function setup() {
@@ -66,12 +67,25 @@ function draw() {
 
 function keyPressed() {
   if (keyCode === UP_ARROW || keyCode === 87) {
+    if (s.yspeed != -1) {
+      moveSound.play();
+    }
     s.dir(0, -1);
   } else if (keyCode === DOWN_ARROW || keyCode === 83) {
+    if (s.yspeed != 1) {
+      moveSound.play();
+    }
     s.dir(0, 1);
   } else if (keyCode === RIGHT_ARROW || keyCode === 68) {
+    if (s.xspeed != 1) {
+      moveSound.play();
+    }
     s.dir(1, 0);
   } else if (keyCode === LEFT_ARROW || keyCode === 65) {
+    if (s.xspeed != -1) {
+      //will not play sound twice if already going that direction
+      moveSound.play();
+    }
     s.dir(-1, 0);
   }
 }
