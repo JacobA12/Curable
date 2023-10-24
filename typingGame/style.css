@@ -26,7 +26,7 @@ body,
 
 .timer {
   position: absolute;
-  top: 2rem;
+  top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   font-size: 3rem;
   color: white;
   font-weight: bold;
@@ -34,8 +34,8 @@ body,
 
 .WPM {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: calc(50vh - 275px - 1rem); /* Adjust as needed */
+  left: calc(50vw - 600px + 1rem);
   font-size: 3rem;
   color: white;
   font-weight: bold;
@@ -43,8 +43,8 @@ body,
 
 .WPMNum {
   position: absolute;
-  top: 2rem;
-  left: 11rem;
+  top: calc(50vh - 275px - 1rem); /* Adjust as needed */
+  left: calc(50vw - 425px + 1rem);
   font-size: 3rem;
   color: white;
   font-weight: bold;
@@ -52,8 +52,8 @@ body,
 
 .levelText {
   position: absolute;
-  top: 2rem;
-  right: 11rem;
+  top: calc(50vh - 275px - 1rem); /* Adjust as needed */
+  right: calc(50vw - 425px + 1rem);
   font-size: 3rem;
   color: white;
   font-weight: bold;
@@ -61,8 +61,8 @@ body,
 
 .levelNum {
   position: absolute;
-  top: 2rem;
-  right: 9rem;
+  top: calc(50vh - 275px - 1rem); /* Adjust as needed */
+  right: calc(50vw - 460px + 1rem);
   font-size: 3rem;
   color: white;
   font-weight: bold;
@@ -70,8 +70,8 @@ body,
 
 .completion {
   position: absolute;
-  top: 8rem;
-  left: 2rem;
+  top: calc(50vh - 180px - 1rem); /* Adjust as needed */
+  left: calc(50vw - 625px + 2rem);
   font-size: 3rem;
   color: white;
   font-weight: bold;
@@ -79,8 +79,8 @@ body,
 
 .completionNum {
   position: absolute;
-  top: 8rem;
-  left: 19rem;
+  top: calc(50vh - 180px - 1rem); /* Adjust as needed */
+  left: calc(50vw - 325px + 2rem);
   font-size: 3rem;
   color: white;
   font-weight: bold;
@@ -88,7 +88,7 @@ body,
 
 .tutorial {
   position: absolute;
-  bottom: 8rem;
+  bottom: calc(50vh - 300px - 1rem); /* Adjust as needed */
   font-size: 2rem;
   color: white;
   font-weight: bold;
