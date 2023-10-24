@@ -5,7 +5,7 @@ const levelNumDisplayElement = document.getElementById("levelNum");
 
 //var declaration
 let obstacles = [];
-let currentLevel = 4;
+let currentLevel = 1;
 let scl = 20;
 let food;
 
