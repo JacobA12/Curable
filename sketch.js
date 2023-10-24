@@ -36,3 +36,4 @@ function buttons() {
   buttonTypingGame.position(50,100);
   buttonTypingGame.style('font-size','24px');
   buttonTypingGame.style('font-text','Garamont')
+}
