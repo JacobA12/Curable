@@ -1,13 +1,15 @@
+//to edit HTML elements in JS
 const scoreDisplayElement = document.getElementById("scoreNum");
 const bestScoreDisplayElement = document.getElementById("bestScoreNum");
 const levelNumDisplayElement = document.getElementById("levelNum");
-let snake;
+
+//var declaration
 let obstacles = [];
 let currentLevel = 1;
 let scl = 20;
-
-// Add as many as you want
 let food;
+
+//sound declaration
 let victorySound;
 let victorySound2;
 let tryAgainSound;
@@ -33,22 +35,24 @@ function setup() {
 }
 
 function pickLocation() {
-  let cols = floor(width / scl);
-  let rows = floor(height / scl);
+  //creating a grid of cells
+  let cols = floor(width / scl); //calculates number of columns
+  let rows = floor(height / scl); //calculates number of rows
   let foodX, foodY;
 
+  //will search for for a spot for the food until a free position is found (not blocked by a wall)
   do {
-    foodX = floor(random(cols));
+    foodX = floor(random(cols)); 
     foodY = floor(random(rows));
   } while (!isPositionFree(foodX * scl, foodY * scl));
 
   food = createVector(foodX, foodY);
-  food.mult(scl);
+  food.mult(scl); //used for vector multiplication to a scalar
 }
 
 function draw() {
   background("green");
-
+  //checks all states
   if (s.eat(food)) {
     pickLocation();
     victorySound2.play();
@@ -57,13 +61,16 @@ function draw() {
   s.update();
   s.show();
   fill(255, 0, 100);
+  //draws food
   rect(food.x, food.y, scl, scl);
 
+  //draws obstacles
   for (let obstacle of obstacles) {
     obstacle.show();
   }
 }
 
+//controls
 function keyPressed() {
   if (keyCode === UP_ARROW || keyCode === 87) {
     if (s.yspeed != -1 && s.yspeed != 1) {
@@ -89,6 +96,7 @@ function keyPressed() {
   }
 }
 
+//checks score to requirements
 function nextLevel() {
   if (scoreDisplayElement.innerText >= 15 && !(currentLevel >= 2)) {
     currentLevel = 2;
@@ -109,6 +117,7 @@ function nextLevel() {
   levelNumDisplayElement.innerText = currentLevel;
 }
 
+//used magical numbers for the for loops until I created levels that I liked
 function drawLevel() {
   if (currentLevel === 1) {
     for (let index = 0; index < 10; index++) {
@@ -164,6 +173,7 @@ function drawLevel() {
 }
 function isPositionFree(x, y) {
   for (let obstacle of obstacles) {
+    //compares the positions of the obsatcle to the given x and y. Returning true if it is free.
     if (
       x < obstacle.x + scl &&
       x + scl > obstacle.x &&
