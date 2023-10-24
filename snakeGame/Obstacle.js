@@ -2,8 +2,6 @@ class Obstacle {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.width = random(1, 5);
-    this.length = random(1, 5);
   }
 
   show() {
