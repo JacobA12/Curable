@@ -32,7 +32,3 @@ function setup() {
     window.location.href = "settings/index.html";
   });
 }
-
-function draw() {
-  // put drawing code here
-}
