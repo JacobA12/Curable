@@ -8,7 +8,7 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #249bc9;
+  background-color: #000000;
 }
 
 body,
@@ -17,7 +17,7 @@ body,
 }
 
 .container {
-  background-color: white;
+  background-color: rgb(0, 0, 0);
   padding: 1rem;
   border-radius: 0.5rem;
   width: 700px;
@@ -28,7 +28,7 @@ body,
   position: absolute;
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   font-size: 3rem;
-  color: white;
+  color: rgb(0, 255, 179);
   font-weight: bold;
 }
 
@@ -37,7 +37,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   left: calc(50vw - 600px + 1rem);
   font-size: 3rem;
-  color: white;
+  color: rgb(0, 255, 128);
   font-weight: bold;
 }
 
@@ -46,7 +46,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   left: calc(50vw - 425px + 1rem);
   font-size: 3rem;
-  color: white;
+  color: rgb(0, 255, 200);
   font-weight: bold;
 }
 
@@ -55,7 +55,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   right: calc(50vw - 425px + 1rem);
   font-size: 3rem;
-  color: white;
+  color: rgb(0, 255, 115);
   font-weight: bold;
 }
 
@@ -64,7 +64,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   right: calc(50vw - 460px + 1rem);
   font-size: 3rem;
-  color: white;
+  color: rgb(0, 255, 85);
   font-weight: bold;
 }
 
@@ -73,7 +73,7 @@ body,
   top: calc(50vh - 180px - 1rem); /* Adjust as needed */
   left: calc(50vw - 625px + 2rem);
   font-size: 3rem;
-  color: white;
+  color: rgb(4, 236, 120);
   font-weight: bold;
 }
 
@@ -82,7 +82,7 @@ body,
   top: calc(50vh - 180px - 1rem); /* Adjust as needed */
   left: calc(50vw - 325px + 2rem);
   font-size: 3rem;
-  color: white;
+  color: rgb(0, 255, 115);
   font-weight: bold;
 }
 
@@ -90,7 +90,7 @@ body,
   position: absolute;
   bottom: calc(50vh - 300px - 1rem); /* Adjust as needed */
   font-size: 2rem;
-  color: white;
+  color: rgb(0, 255, 76);
   font-weight: bold;
 }
 
@@ -98,6 +98,7 @@ body,
   margin-bottom: 1rem;
   margin-left: calc(1rem + 2px);
   margin-right: calc(1rem + 2px);
+  color: rgb(0, 247, 0);
 }
 
 .quote-input {
@@ -110,14 +111,15 @@ body,
   resize: none;
   font-size: 1rem;
   border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 0.774);
 }
 
-.qoute-input:focus {
-  border-color: black;
+.quote-input:focus {
+  border-color: rgb(0, 255, 106);
 }
 
 .correct {
-  color: green;
+  color: rgb(255, 255, 255);
 }
 
 .incorrect {
