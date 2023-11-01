@@ -21,14 +21,18 @@ let victorySound;
 let victorySound2;
 let tryAgainSound;
 let tryAgainSound2;
+let backgroundMusic;
+
 function preload() {
   victorySound = loadSound("assets/victorySound.wav");
   victorySound2 = loadSound("assets/victorySound2.wav");
   tryAgainSound = loadSound("assets/tryAgainSound.wav");
   tryAgainSound2 = loadSound("assets/tryAgainSound2.wav");
+  backgroundMusic = loadSound("assets/jacob_music_lol.wav");
 }
 function setup() {
   soundFormats("mp3", "ogg", "wav");
+  backgroundMusic.loop();
 }
 
 quoteInputElement.addEventListener("input", () => {

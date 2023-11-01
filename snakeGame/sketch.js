@@ -15,6 +15,7 @@ let victorySound2;
 let tryAgainSound;
 let tryAgainSound2;
 let moveSound;
+let backgroundMusic;
 
 function preload() {
   victorySound = loadSound("assets/victorySound.wav");
@@ -22,6 +23,7 @@ function preload() {
   tryAgainSound = loadSound("assets/tryAgainSound.wav");
   tryAgainSound2 = loadSound("assets/tryAgainSound2.wav");
   moveSound = loadSound("assets/move.mp3");
+  backgroundMusic = loadSound("assets/jacob_music_lol.wav");
 }
 
 function setup() {
@@ -32,6 +34,7 @@ function setup() {
   nextLevel();
   frameRate(10);
   pickLocation();
+  backgroundMusic.loop();
 }
 
 function pickLocation() {
