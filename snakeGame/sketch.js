@@ -42,7 +42,7 @@ function pickLocation() {
 
   //will search for for a spot for the food until a free position is found (not blocked by a wall)
   do {
-    foodX = floor(random(cols)); 
+    foodX = floor(random(cols));
     foodY = floor(random(rows));
   } while (!isPositionFree(foodX * scl, foodY * scl));
 
@@ -59,6 +59,7 @@ function draw() {
   }
   s.death();
   s.update();
+  directionChanged = false;
   s.show();
   fill(255, 0, 100);
   //draws food
@@ -71,28 +72,36 @@ function draw() {
 }
 
 //controls
+let directionChanged = false;
 function keyPressed() {
+  if (directionChanged) {
+    return;
+  }
   if (keyCode === UP_ARROW || keyCode === 87) {
     if (s.yspeed != -1 && s.yspeed != 1) {
       moveSound.play();
     }
     s.dir(0, -1);
+    directionChanged = true;
   } else if (keyCode === DOWN_ARROW || keyCode === 83) {
     if (s.yspeed != 1 && s.yspeed != -1) {
       moveSound.play();
     }
     s.dir(0, 1);
+    directionChanged = true;
   } else if (keyCode === RIGHT_ARROW || keyCode === 68) {
     if (s.xspeed != 1 && s.xspeed != -1) {
       moveSound.play();
     }
     s.dir(1, 0);
+    directionChanged = true;
   } else if (keyCode === LEFT_ARROW || keyCode === 65) {
     if (s.xspeed != -1 && s.xspeed != 1) {
       //will not play sound twice if already going that direction
       moveSound.play();
     }
     s.dir(-1, 0);
+    directionChanged = true;
   }
 }
 
