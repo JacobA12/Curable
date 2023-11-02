@@ -2,8 +2,12 @@ let settingsButton;
 let snakeGameButton;
 let typingGameButton;
 
+let backgroundImage;
+function preload(){
+  backgroundImage = loadImage("assets/backgroundImage.jpg");
+}
 function setup() {
-  noCanvas();
+  createCanvas(displayWidth, displayHeight);
 
   let title = createElement("h2", "GUI");
   title.id("myTitle");
@@ -39,4 +43,8 @@ function setup() {
     settingsButton.style("background-color", "green");
     window.location.href = "settings/index.html";
   });
+}
+
+function draw(){
+  background(backgroundImage);
 }
