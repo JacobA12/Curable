@@ -8,6 +8,8 @@ let timer = 5;
 let points = 0;
 let currentLevel = 1;
 let timerDeduction = 1 / 60;
+
+//speed and direction of ball
 let dx = 0;
 let dy = 0;
 
@@ -18,7 +20,7 @@ let backgroundMusic;
 function preload() {
   wrong = loadSound("assets/wrong.wav");
   right = loadSound("assets/right.wav");
-  backgroundMusic = loadSound("assets/jacob_game_lol.wav")
+  backgroundMusic = loadSound("assets/jacob_game_lol.wav");
 }
 
 function setup() {
@@ -63,7 +65,7 @@ function draw() {
   checkBounds(); */
 
   let length = map(timer, 0, 5, 0, 200);
-  fill('green')
+  fill("green");
   rect(20, 20, 10, length);
 
   textSize(48);
@@ -75,7 +77,6 @@ function draw() {
   text("Current Level:", 415, 575);
 
   nextLevel();
-  
 }
 
 function touchStarted() {
