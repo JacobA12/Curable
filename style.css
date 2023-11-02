@@ -27,7 +27,7 @@ body {
   top: calc(25vh + 60px - 10rem)
 }
 
-.settings {
+.tappingGame {
   position: absolute;
   top: calc(25vh + 260px - 10rem);
 }

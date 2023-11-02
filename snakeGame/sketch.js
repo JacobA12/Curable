@@ -23,18 +23,18 @@ function preload() {
   tryAgainSound = loadSound("assets/tryAgainSound.wav");
   tryAgainSound2 = loadSound("assets/tryAgainSound2.wav");
   moveSound = loadSound("assets/move.mp3");
-  backgroundMusic = loadSound("assets/jacob_music_lol.wav");
+  backgroundMusic = loadSound("assets/jacob_game_lol.wav");
 }
 
 function setup() {
   soundFormats("mp3", "ogg", "wav");
+  backgroundMusic.loop();
   createCanvas(600, 600);
   s = new Snake();
   drawLevel();
   nextLevel();
   frameRate(10);
   pickLocation();
-  backgroundMusic.loop();
 }
 
 function pickLocation() {
