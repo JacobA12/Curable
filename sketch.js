@@ -24,11 +24,19 @@ function setup() {
     window.location.href = "typingGame/typingGame.html";
   });
 
-  settingsButton = createButton("Tapping Game");
+  settingsButton = createButton("Tapping Game!");
   settingsButton.id("myButton");
   settingsButton.class('tappingGame');
   settingsButton.mousePressed(() => {
     settingsButton.style("background-color", "green");
     window.location.href = "tappingGame/index.html";
+  });
+
+  settingsButton = createButton("Settings");
+  settingsButton.id("myButton");
+  settingsButton.class('settings');
+  settingsButton.mousePressed(() => {
+    settingsButton.style("background-color", "green");
+    window.location.href = "settings/index.html";
   });
 }

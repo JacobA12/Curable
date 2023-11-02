@@ -36,3 +36,8 @@ body {
   position: absolute;
   top: calc(25vh + 160px - 10rem);
 }
+
+.settings {
+  position: absolute;
+  top: calc(25vh + 360px - 10rem);
+}
