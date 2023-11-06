@@ -18,9 +18,9 @@ let right;
 let backgroundMusic;
 
 function preload() {
-  wrong = loadSound("assets/wrong.wav");
-  right = loadSound("assets/right.wav");
-  backgroundMusic = loadSound("assets/jacob_game_lol.wav");
+  wrong = loadSound("../assets/wrong.wav");
+  right = loadSound("../assets/right.wav");
+  backgroundMusic = loadSound("../assets/jacob_game_lol.wav");
 }
 
 function setup() {
