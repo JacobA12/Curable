@@ -3,7 +3,7 @@ function setup() {
 }
 
 function preload(){
-   img = loadImage('assets/progress.jpg');
+   img = loadImage('../assets/progress.jpg');
    img.resize(600, 600);
 }
 
