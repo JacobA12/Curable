@@ -24,11 +24,11 @@ let tryAgainSound2;
 let backgroundMusic;
 
 function preload() {
-  victorySound = loadSound("assets/victorySound.wav");
-  victorySound2 = loadSound("assets/victorySound2.wav");
-  tryAgainSound = loadSound("assets/tryAgainSound.wav");
-  tryAgainSound2 = loadSound("assets/tryAgainSound2.wav");
-  backgroundMusic = loadSound("assets/jacob_game_lol.wav");
+  victorySound = loadSound("../assets/victorySound.wav");
+  victorySound2 = loadSound("../assets/victorySound2.wav");
+  tryAgainSound = loadSound("../assets/tryAgainSound.wav");
+  tryAgainSound2 = loadSound("../assets/tryAgainSound2.wav");
+  backgroundMusic = loadSound("../assets/jacob_game_lol.wav");
 }
 function setup() {
   soundFormats("mp3", "ogg", "wav");
