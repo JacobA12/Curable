@@ -30,7 +30,13 @@ function setup() {
   object = createVector(random(width), random(height));
   backgroundMusic.loop();
 
-  
+  homeButton = createButton("Home");
+  homeButton.id("myButton");
+  homeButton.class("home");
+  homeButton.style("background-color", "green");
+  homeButton.mousePressed(() => {
+    window.location.href = "../index.html"
+  })
 }
 
 function draw() {
