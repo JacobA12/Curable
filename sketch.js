@@ -75,7 +75,7 @@ function buttons() {
   buttonDrawing.style('borderWidth',"5px")
   buttonDrawing.style('font-size',"40px");
   buttonDrawing.mousePressed(() => {
-    window.location.href = "settings/index.html";
+    window.location.href = "drawingGame/index.html";
   });
   ///////
 }
