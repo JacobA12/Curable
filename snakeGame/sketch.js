@@ -9,6 +9,8 @@ let currentLevel = 1;
 let scl = 20;
 let food;
 
+let homeButton;
+
 //sound declaration
 let victorySound;
 let victorySound2;
@@ -35,6 +37,14 @@ function setup() {
   nextLevel();
   frameRate(10);
   pickLocation();
+
+  homeButton = createButton("Home");
+  homeButton.id("myButton");
+  homeButton.class("home");
+  homeButton.style("background-color", "green");
+  homeButton.mousePressed(() => {
+    window.location.href = "../index.html";
+  });
 }
 
 function pickLocation() {

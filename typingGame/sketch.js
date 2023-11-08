@@ -41,8 +41,8 @@ function setup() {
   homeButton.class("home");
   homeButton.style("background-color", "green");
   homeButton.mousePressed(() => {
-    window.location.href = "../index.html"
-  })
+    window.location.href = "../index.html";
+  });
 }
 
 quoteInputElement.addEventListener("input", () => {
