@@ -8,6 +8,7 @@ let timer = 5;
 let points = 0;
 let currentLevel = 1;
 let timerDeduction = 1 / 60;
+let homeButton;
 
 //speed and direction of ball
 let dx = 0;
@@ -28,6 +29,8 @@ function setup() {
   createCanvas(600, 600);
   object = createVector(random(width), random(height));
   backgroundMusic.loop();
+
+  
 }
 
 function draw() {

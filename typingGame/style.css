@@ -37,7 +37,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   left: calc(50vw - 600px + 1rem);
   font-size: 3rem;
-  color: rgb(0, 255, 128);
+  color: rgb(0, 255, 115);
   font-weight: bold;
 }
 
@@ -46,7 +46,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   left: calc(50vw - 425px + 1rem);
   font-size: 3rem;
-  color: rgb(0, 255, 200);
+  color: rgb(0, 255, 115);
   font-weight: bold;
 }
 
@@ -71,7 +71,7 @@ body,
 .completion {
   position: absolute;
   top: calc(50vh - 180px - 1rem); /* Adjust as needed */
-  left: calc(50vw - 625px + 2rem);
+  left: calc(50vw - 618px + 2rem);
   font-size: 3rem;
   color: rgb(4, 236, 120);
   font-weight: bold;
@@ -126,3 +126,17 @@ body,
   color: red;
   text-decoration: underline;
 }
+
+.home {
+  border: 2px solid rgba(182, 5, 5, 0.829);
+  position: fixed; /* Change this line */
+  color: rgb(0, 255, 106);
+  border-radius: 0.5rem;
+  resize: none;
+  outline: none;
+  top: calc(50vh - 300px - 4rem); /* Adjust as needed */
+  left: calc(40vw - 476px + 2rem);
+  font-size: 3rem;
+  font-weight: bold;
+}
+

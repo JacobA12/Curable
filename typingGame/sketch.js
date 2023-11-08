@@ -3,6 +3,8 @@ const quoteDisplayElement = document.getElementById("quoteDisplay");
 const quoteInputElement = document.getElementById("quoteInput");
 const timerElement = document.getElementById("timer");
 
+let homeButton;
+
 //wpm
 const WPMElement = document.getElementById("WPMNum");
 let wpm;
@@ -33,6 +35,14 @@ function preload() {
 function setup() {
   soundFormats("mp3", "ogg", "wav");
   backgroundMusic.loop();
+
+  homeButton = createButton("Home");
+  homeButton.id("myButton");
+  homeButton.class("home");
+  homeButton.style("background-color", "green");
+  homeButton.mousePressed(() => {
+    window.location.href = "../index.html"
+  })
 }
 
 quoteInputElement.addEventListener("input", () => {
