@@ -161,30 +161,9 @@ function drawWinningScreen() {
   text("Winner!", 200, 300);
 }
 
-/* function changeSpeed() {
-  switch (currentLevel) {
-    case 2:
-      dx = 1;
-      dy = 1;
-      break;
-    case 3:
-      dx = 2;
-      dy = 2;
-    default:
-      break;
-  }
-  dx = random(-5, 5);
-  dy = random(-5, 5);
-  object.x += dx;
-  object.y += dy;
-} */
 
-/* function checkBounds() {
-  if (object.x >= width || object.y >= height) {
-    points--;
-    object = createVector(random(width), random(height));
-  }
-} */
+
+
 
 //color change when ball is clicked
 //add two objects that need to be clicked
