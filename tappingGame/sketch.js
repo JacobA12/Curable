@@ -1,6 +1,7 @@
 //credits - Jaden for the sounds
 
 let object;
+let object2;
 let player;
 let rad = 15;
 let scl = 2;
@@ -27,7 +28,9 @@ function preload() {
 function setup() {
   soundFormats("wav");
   createCanvas(600, 600);
+
   object = createVector(random(width), random(height));
+  object2 = createVector(random(width), random(height));
   backgroundMusic.loop();
 
   homeButton = createButton("Home");
@@ -46,7 +49,6 @@ function draw() {
   if (touches.length > 0) {
     player = createVector(touches[0].x, touches[0].y);
   }
-
   //Timer
   ////////////////////////////////////////////
   timer -= timerDeduction;
@@ -68,6 +70,12 @@ function draw() {
   //ball
   fill("red");
   ellipse(object.x, object.y, rad * scl);
+
+  //second ball for level 2
+  if (currentLevel === 2) {
+    fill("blue");
+    ellipse(object2.x, object2.y, rad * scl);
+  }
 
   //change x and y of object here to make it move
   /* changeSpeed();
@@ -92,6 +100,11 @@ function touchStarted() {
   // Check if player exists
   if (player) {
     let dis = p5.Vector.dist(player, object);
+    let dis2;
+
+    if (currentLevel === 2) {
+      dis2 = p5.Vector.dist(player, object2);
+    }
 
     if (dis < rad) {
       object = createVector(random(width), random(height));
@@ -99,18 +112,32 @@ function touchStarted() {
       timer += 0.5;
       right.play();
     }
+    if (currentLevel === 2) {
+      if (dis2 < rad) {
+        object2 = createVector(random(width), random(height));
+        points += 2;
+        right.play();
+      }
+    }
   }
 }
 
 function nextLevel() {
   switch (currentLevel) {
     case 1:
+      if (points >= 5) {
+        currentLevel++;
+        timer = 5;
+        points = 0;
+      }
+      break;
     case 2:
       if (points >= 5) {
         currentLevel++;
         timer = 5;
         points = 0;
       }
+      rad = 15 * 0.75;
       break;
     case 3:
       //add victory screen
