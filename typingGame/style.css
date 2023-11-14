@@ -128,14 +128,13 @@ body,
 }
 
 .home {
-  border: 2px solid rgba(182, 5, 5, 0.829);
+  border: 5px solid black;
   position: fixed; /* Change this line */
-  color: rgb(0, 255, 106);
+  color: black;
   border-radius: 0.5rem;
   resize: none;
   outline: none;
   top: calc(50vh - 300px - 4rem); /* Adjust as needed */
   left: calc(40vw - 476px + 2rem);
   font-size: 3rem;
-  font-weight: bold;
 }
