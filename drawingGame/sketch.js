@@ -6,7 +6,8 @@ function setup() {
   homeButton.class("home");
   homeButton.position(800,20);
   homeButton.style("background-color", color(254,245,218));
-  homeButton.style('font-family','Palatino')
+  homeButton.style('font-family','Palatino');
+  homeButton.position(0,0);
   homeButton.mousePressed(() => {
     window.location.href = "../index.html";
   });
