@@ -18,7 +18,7 @@ canvas {
   height: 80vh;
   width: 80vw;
   display: block;
-  border: rgb(254,245,218);
+  border: solid black;
   border-width: 10px;
 }
 
