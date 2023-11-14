@@ -13,7 +13,7 @@ canvas {
   top: calc(50vh - 300px - 0.5rem); /* Adjust as needed */
   left: calc(50vw - 460px + 1rem);
   font-size: 2rem;
-  color: rgb(255, 255, 255);
+  color: black;
   font-weight: bold;
 }
 
@@ -22,7 +22,7 @@ canvas {
   top: calc(50vh - 298px - 0.5rem); /* Adjust as needed */
   left: calc(50vw - 350px + 1rem);
   font-size: 2rem;
-  color: rgb(255, 255, 255);
+  color: black;
   font-weight: bold;
 }
 
@@ -31,7 +31,7 @@ canvas {
   top: calc(50vh - 257px - 0.5rem); /* Adjust as needed */
   left: calc(50vw - 350px + 1rem);
   font-size: 2rem;
-  color: rgb(255, 255, 255);
+  color: black;
   font-weight: bold;
 }
 
@@ -40,7 +40,7 @@ canvas {
   top: calc(50vh - 260px - 0.5rem); /* Adjust as needed */
   left: calc(50vw - 460px + 1rem);
   font-size: 2rem;
-  color: rgb(255, 255, 255);
+  color: black;
   font-weight: bold;
 }
 .level {
@@ -48,7 +48,7 @@ canvas {
   bottom: calc(50vh - 257px - 2rem); /* Adjust as needed */
   left: calc(50vw - 465px + 1rem);
   font-size: 2rem;
-  color: rgb(255, 255, 255);
+  color: black;
   font-weight: bold;
 }
 .levelNum {
@@ -56,7 +56,7 @@ canvas {
   bottom: calc(50vh - 257px - 2rem); /* Adjust as needed */
   left: calc(50vw - 375px + 1rem);
   font-size: 2rem;
-  color: rgb(255, 255, 255);
+  color: black;
   font-weight: bold;
 }
 
@@ -65,7 +65,7 @@ canvas {
   top: calc(50vh - 260px - 2.5rem); /* Adjust as needed */
   right: calc(50vw - 595px + 1rem);
   font-size: 1rem;
-  color: rgb(255, 255, 255);
+  color: black;
   font-weight: bold;
 }
 
