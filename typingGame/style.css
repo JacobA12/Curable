@@ -8,7 +8,7 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #000000;
+  background-color: rgb(188,158,130);
 }
 
 body,
@@ -28,7 +28,7 @@ body,
   position: absolute;
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   font-size: 3rem;
-  color: rgb(0, 255, 179);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
@@ -37,7 +37,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   left: calc(50vw - 600px + 1rem);
   font-size: 3rem;
-  color: rgb(0, 255, 115);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
@@ -46,7 +46,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   left: calc(50vw - 425px + 1rem);
   font-size: 3rem;
-  color: rgb(0, 255, 115);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
@@ -55,7 +55,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   right: calc(50vw - 425px + 1rem);
   font-size: 3rem;
-  color: rgb(0, 255, 115);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
@@ -64,7 +64,7 @@ body,
   top: calc(50vh - 275px - 1rem); /* Adjust as needed */
   right: calc(50vw - 460px + 1rem);
   font-size: 3rem;
-  color: rgb(0, 255, 85);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
@@ -73,7 +73,7 @@ body,
   top: calc(50vh - 180px - 1rem); /* Adjust as needed */
   left: calc(50vw - 618px + 2rem);
   font-size: 3rem;
-  color: rgb(4, 236, 120);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
@@ -82,7 +82,7 @@ body,
   top: calc(50vh - 180px - 1rem); /* Adjust as needed */
   left: calc(50vw - 325px + 2rem);
   font-size: 3rem;
-  color: rgb(0, 255, 115);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
@@ -90,7 +90,7 @@ body,
   position: absolute;
   bottom: calc(50vh - 300px - 1rem); /* Adjust as needed */
   font-size: 2rem;
-  color: rgb(0, 255, 76);
+  color: rgb(0,0,0);
   font-weight: bold;
 }
 
