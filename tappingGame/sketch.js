@@ -45,7 +45,7 @@ function setup() {
 }
 
 function draw() {
-  background("black");
+  background(254,245,218);
 
   // Check if there's at least one touch point
   if (touches.length > 0) {
