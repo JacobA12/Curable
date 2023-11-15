@@ -10,6 +10,7 @@ let scl = 20;
 let food;
 
 let homeButton;
+let resetButton;
 
 //sound declaration
 let victorySound;
@@ -41,11 +42,21 @@ function setup() {
   homeButton = createButton("Home");
   homeButton.id("myButton");
   homeButton.class("home");
-  homeButton.style("background-color", color(254,245,218));
-  homeButton.style('font-family','Palatino');
-  homeButton.position(0,0);
+  homeButton.style("background-color", color(254, 245, 218));
+  homeButton.style("font-family", "Palatino");
+  homeButton.position(0, 0);
   homeButton.mousePressed(() => {
     window.location.href = "../index.html";
+  });
+
+  resetButton = createButton("Reset");
+  resetButton.id("myButton");
+  resetButton.class("reset");
+  resetButton.style("font-family", "Palatino");
+  resetButton.position(0, 75);
+
+  resetButton.mousePressed(() => {
+    pickLocation();
   });
 }
 
@@ -122,18 +133,22 @@ function keyPressed() {
 
 //checks score to requirements
 function nextLevel() {
-  if (scoreDisplayElement.innerText >= 15 && !(currentLevel >= 2)) {
+  if (scoreDisplayElement.innerText >= 3 && !(currentLevel >= 2)) {
     currentLevel = 2;
     obstacles = [];
     drawLevel();
-  } else if (scoreDisplayElement.innerText >= 20 && !(currentLevel >= 3)) {
+  } else if (scoreDisplayElement.innerText >= 3 && !(currentLevel >= 3)) {
     currentLevel = 3;
     obstacles = [];
     drawLevel();
-  } else if (scoreDisplayElement.innerText >= 25 && !(currentLevel === 4)) {
+  } else if (scoreDisplayElement.innerText >= 3 && !(currentLevel >= 4)) {
     currentLevel = 4;
     obstacles = [];
     drawLevel();
+  } else if (scoreDisplayElement.innerText >= 3 && !(currentLevel >= 5)) {
+    currentLevel = 5;
+    obstacles = [];
+    drawWinningScreen();
   } else if (!(currentLevel > 1)) {
     currentLevel = 1;
     drawLevel();
@@ -208,4 +223,13 @@ function isPositionFree(x, y) {
     }
   }
   return true;
+}
+function drawWinningScreen() {
+  fill("black");
+  rect(0, 0, width, height);
+  fill("green");
+  textSize(48);
+  textStyle(BOLD);
+  text("Winner!", 200, 300);
+  noLoop();
 }
