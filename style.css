@@ -9,8 +9,11 @@ canvas {
 .Buttons {
 font-size: 40px;
 background-color: rgb(254,245,218);
-cursor: pointer;
 font-family: "Palatino";
 border-color: black;
 border-width: 5px;
+}
+.Buttons:hover{
+  cursor: pointer;
+  border-color: white;
 }
