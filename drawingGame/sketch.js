@@ -6,13 +6,11 @@ let drawnLine;
 let currentOrder = 0;
 let accuracy = 100;
 
-
 function setup() {
   createCanvas(700, 450);
   background(0);
   noSmooth();
   strokeWeight(7);
-
 
   // Create rollover circles
   //circle 1 to 2
@@ -47,41 +45,45 @@ function setup() {
         11 + index
       )
     );
-
-    //circles 4 to 5
-    circles.push(createCircle(200, 300, 20, "4", 15));
-    for (let index = 0; index < 4; index++) {
-      accurCircles.push(
-        createAccurCircle(220 + 20 * index, 300, 20, "4." + index.toString()),
+  }
+  //circles 4 to 5
+  circles.push(createCircle(200, 300, 20, "4", 15));
+  for (let index = 0; index < 4; index++) {
+    accurCircles.push(
+      createAccurCircle(
+        220 + 20 * index,
+        300,
+        20,
+        "4." + index.toString(),
         16 + index
-      );
-    }
-    //circles 5 to 6
-    circles.push(createCircle(300, 300, 20, "5"), 20);
-    for (let index = 0; index < 4; index++) {
-      accurCircles.push(
-        createAccurCircle(
-          290 - 10 * index,
-          280 - 20 * index,
-          20,
-          "5." + index.toString()
-        ),
+      )
+    );
+  }
+  //circles 5 to 6
+  circles.push(createCircle(300, 300, 20, "5"), 20);
+  for (let index = 0; index < 4; index++) {
+    accurCircles.push(
+      createAccurCircle(
+        290 - 10 * index,
+        280 - 20 * index,
+        20,
+        "5." + index.toString(),
         21 + index
-      );
-    }
-    //circles 6 to 1
-    circles.push(createCircle(250, 200, 20, "6"), 25);
-    for (let index = 0; index < 4; index++) {
-      accurCircles.push(
-        createAccurCircle(
-          240 - 10 * index,
-          180 - 20 * index,
-          20,
-          "6." + index.toString()
-        ),
+      )
+    );
+  }
+  //circles 6 to 1
+  circles.push(createCircle(250, 200, 20, "6"), 25);
+  for (let index = 0; index < 4; index++) {
+    accurCircles.push(
+      createAccurCircle(
+        240 - 10 * index,
+        180 - 20 * index,
+        20,
+        "6." + index.toString(),
         26 + index
-      );
-    }
+      )
+    );
   }
 }
 
@@ -93,6 +95,9 @@ function createCircle(x, y, diameter, label, order) {
   textSize(5);
   textAlign(CENTER, CENTER);
   text(label, x, y);
+
+  console.log(order);
+
   return { x, y, diameter, label, order, intersected: false };
 }
 
@@ -103,6 +108,9 @@ function createAccurCircle(x, y, diameter, label, order) {
   textSize(5);
   textAlign(CENTER, CENTER);
   text(label, x, y);
+
+  console.log(order);
+
   return { x, y, diameter, label, order, intersected: false };
 }
 
@@ -182,7 +190,7 @@ function checkAccuracy() {
         currentOrder++;
       } else {
         console.log(`Circle ${circle.label} was skipped`);
-        accuracy -= 10; // decrease accuracy by 10 for each skipped circle
+        accuracy -= 0.03; // decrease accuracy by .03 for each skipped circle
         currentOrder++;
       }
     }
@@ -203,7 +211,7 @@ function checkAccuracy() {
         currentOrder++;
       } else {
         console.log(`Circle ${circle.label} was skipped`);
-        accuracy -= 10; // decrease accuracy by 10 for each skipped circle
+        accuracy -= 0.03; // decrease accuracy by .03 for each skipped circle
         currentOrder++;
       }
     }
