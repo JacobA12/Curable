@@ -24,6 +24,7 @@ canvas {
 
 .home {
   border: 5px solid black;
+  box-shadow: 7px 7px 20px;
   position: fixed; /* Change this line */
   color: black;
   border-radius: 0.5rem;
