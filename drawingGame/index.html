@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sketch</title>
+    <title>Drawing Game</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -14,5 +14,23 @@
 
   <body>
     <script src="sketch.js"></script>
+    <style>
+      body {
+        background-color: rgb(188,158,130); /* Replace #yourColor with the color you want */
+      }
+    </style>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+    
+      #defaultCanvas0 { /* This is the default id of the canvas created by p5.js */
+        border: 3px solid black; /* Optional: adds a border around the canvas */
+      }
+    </style>
   </body>
 </html>
