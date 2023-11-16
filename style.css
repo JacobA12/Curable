@@ -12,6 +12,7 @@ background-color: rgb(254,245,218);
 font-family: "Palatino";
 border-color: black;
 border-width: 5px;
+box-shadow: 7px 7px 20px;
 }
 .Buttons:hover{
   cursor: pointer;
