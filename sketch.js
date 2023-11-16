@@ -9,8 +9,8 @@ function draw() {
   strokeWeight(5); 
   rect(-10,-10,windowWidth + 100, scaler)
   fill(0);
-  textSize(40)
-  text('Curable',(windowWidth / 2 - 70), (scaler / 2));
+  textSize(50)
+  text('Curable',(windowWidth / 2 - 95), (scaler / 2));
   fill(254,245,218);
   textFont('Palatino')
 }
