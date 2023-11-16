@@ -60,7 +60,7 @@ function setup() {
     );
   }
   //circles 5 to 6
-  circles.push(createCircle(300, 300, 20, "5"), 20);
+  circles.push(createCircle(300, 300, 20, "5", 20));
   for (let index = 0; index < 4; index++) {
     accurCircles.push(
       createAccurCircle(
@@ -73,7 +73,7 @@ function setup() {
     );
   }
   //circles 6 to 1
-  circles.push(createCircle(250, 200, 20, "6"), 25);
+  circles.push(createCircle(250, 200, 20, "6", 25));
   for (let index = 0; index < 4; index++) {
     accurCircles.push(
       createAccurCircle(
