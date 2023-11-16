@@ -139,3 +139,7 @@ body,
   left: calc(40vw - 476px + 2rem);
   font-size: 3rem;
 }
+.home:hover{
+  cursor: pointer;
+  border-color: white;
+}
