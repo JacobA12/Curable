@@ -88,6 +88,7 @@ canvas {
 
 .reset {
   border: 5px solid black;
+  box-shadow: 7px 7px 20px;
   position: fixed; /* Change this line */
   color: black;
   border-radius: 0.5rem;
@@ -96,4 +97,8 @@ canvas {
   top: calc(50vh - 200px - 4rem); /* Adjust as needed */
   left: calc(40vw - 476px + 2rem);
   font-size: 3rem
+}
+.reset:hover{
+  cursor: pointer;
+  border-color: white;
 }
