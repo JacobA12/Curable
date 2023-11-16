@@ -135,4 +135,15 @@ function checkAccuracy() {
       circle.intersected = true;
     }
   });
+
+
+  accurCircles.forEach(circle => {
+    let circleCenter = createVector(circle.x, circle.y);
+    let startDist = p5.Vector.dist(lineStart, circleCenter);
+    let endDist = p5.Vector.dist(lineEnd, circleCenter);
+    if ((startDist <= circle.diameter / 2 || endDist <= circle.diameter / 2) && !circle.intersected) {
+      console.log(`The line intersects circle ${circle.label}`);
+      circle.intersected = true;
+    }
+  });
 }
