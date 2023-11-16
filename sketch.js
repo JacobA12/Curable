@@ -10,7 +10,7 @@ function draw() {
   rect(-10,-10,windowWidth + 100, scaler)
   fill(0);
   textSize(50)
-  text('Curable',(windowWidth / 2 - 95), (scaler / 2));
+  text('Curable',(windowWidth / 2 - 95), (scaler / 1.75));
   fill(254,245,218);
   textFont('Palatino')
 }
