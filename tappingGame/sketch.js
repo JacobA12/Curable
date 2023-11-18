@@ -103,7 +103,7 @@ function touchStarted() {
     let dis = p5.Vector.dist(player, object);
     let dis2;
 
-    if (dis <= rad) {
+    if (dis <= rad * 2) {
       object = createVector(random(width), random(height));
       points++;
       timer += 0.5;
@@ -128,7 +128,6 @@ function nextLevel() {
         timer = 5;
         points = 0;
       }
-      rad = 15 * 0.75;
       break;
     case 3:
       //add victory screen

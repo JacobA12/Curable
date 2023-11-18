@@ -8,7 +8,7 @@ let obstacles = [];
 let currentLevel = 1;
 let scl = 20;
 let food;
-
+let pause = false;
 let homeButton;
 let resetButton;
 
@@ -52,7 +52,7 @@ function setup() {
     window.location.href = "../index.html";
   });
 
-  resetButton = createButton("Reset");
+  resetButton = createButton("Reset Food");
   resetButton.id("myButton");
   resetButton.class("reset");
   resetButton.style("font-family", "Palatino");
@@ -235,4 +235,14 @@ function drawWinningScreen() {
   textStyle(BOLD);
   text("Winner!", 200, 300);
   noLoop();
+}
+
+function mousePressed(){ //bei click Pause, bei 2. click weiter
+  if(pause==false){
+    noLoop();
+    pause=true;
+  }else{
+    loop();
+    pause = false;
+  }
 }

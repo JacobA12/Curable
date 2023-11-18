@@ -17,7 +17,7 @@ body,
 }
 
 .container {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   padding: 1rem;
   border-radius: 0.5rem;
   width: 700px;
@@ -98,7 +98,7 @@ body,
   margin-bottom: 1rem;
   margin-left: calc(1rem + 2px);
   margin-right: calc(1rem + 2px);
-  color: rgb(0, 247, 0);
+  color: rgb(0, 0, 0);
 }
 
 .quote-input {
@@ -111,15 +111,15 @@ body,
   resize: none;
   font-size: 1rem;
   border-radius: 0.5rem;
-  color: rgba(255, 255, 255, 0.774);
+  color: rgba(0, 0, 0, 0.774);
 }
 
 .quote-input:focus {
-  border-color: rgb(0, 255, 106);
+  border-color: rgb(0, 0, 0);
 }
 
 .correct {
-  color: rgb(255, 255, 255);
+  color: rgb(54, 185, 69);
 }
 
 .incorrect {

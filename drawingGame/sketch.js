@@ -6,16 +6,16 @@ let threshold = 10;
 let touchPos;
 let homeButton;
 let timer = 0;
-let timeAddition = 1/60;
+let timeAddition = 1 / 60;
 
 let backgroundMusic;
 let offTrack;
 let lego;
 
-function preload(){
+function preload() {
   offTrack = loadSound("../assets/offTrack2.wav");
   lego = loadSound("../assets/lego.mp3");
-  backgroundMusic = loadSound("../assets/backgroundMusic.wav")
+  backgroundMusic = loadSound("../assets/backgroundMusic.wav");
 }
 
 // Triangle vertices
@@ -59,7 +59,7 @@ function draw() {
   fill(204, 101, 192, 127);
   stroke(127, 63, 120);
   strokeWeight(17);
-  createShape(targetShape);
+  createShape(currentLevel);
 }
 
 function touchStarted() {
@@ -78,9 +78,14 @@ function touchEnded() {
   isTracing = false;
 }
 
-function createShape() {
-  if (currentLevel === 1) {
-    triangle(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y);
+function createShape(currentLevel) {
+  switch (currentLevel) {
+    case 1:
+      triangle(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y);
+      break;
+  
+    default:
+      break;
   }
 }
 
