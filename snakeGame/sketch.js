@@ -59,7 +59,7 @@ function setup() {
   resetButton.class("reset");
   resetButton.style("background-color", color(254, 245, 218));
   resetButton.style("font-family", "Palatino");
-  resetButton.position(0, 150);
+  resetButton.position(0, 225);
 
   resetButton.mousePressed(() => {
     pickLocation();
@@ -87,7 +87,7 @@ function setup() {
   muteButton.class("reset");
   muteButton.style("background-color", color(254, 245, 218));
   muteButton.style("font-family", "Palatino");
-  muteButton.position(0, 225);
+  muteButton.position(0, 150);
 
   muteButton.mousePressed(() => {
     if (backgroundMusic.isPlaying()) {
