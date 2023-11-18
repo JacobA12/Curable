@@ -22,15 +22,18 @@ function draw() {
   background("gray");
   touchMoved();
 
-  fill(204, 101, 192, 127);
-  stroke(127, 63, 120);
-  strokeWeight(17);
-  createShape(targetShape);
   if (touches.length > 0) {
     stroke(2);
     fill("gray");
     ellipse(touches[0].x, touches[0].y, 40, 40, 45);
+    calculateScore();
+    updateBackgroundColor();
   }
+
+  fill(204, 101, 192, 127);
+  stroke(127, 63, 120);
+  strokeWeight(17);
+  createShape(targetShape);
 }
 
 function touchStarted() {
@@ -44,7 +47,6 @@ function touchMoved() {
   if (touches.length > 0) {
     let point = createVector(touches[0].x, touches[0].y);
     line(touches[0].x, touches[0].y, pmouseX, pmouseY);
-    calculateScore();
   }
 }
 
@@ -68,8 +70,10 @@ function calculateScore() {
   // Check if the touch is on the outline
   if (d1 <= 10 || d2 <= 10 || d3 <= 10) {
     console.log("Touch is on the outline");
+    isTracing = true;
   } else {
     console.log("Touch is not on the outline");
+    isTracing = false;
   }
 }
 
@@ -89,6 +93,14 @@ function distSq(v, w) {
   return pow(v.x - w.x, 2) + pow(v.y - w.y, 2);
 }
 
-function getTouchPosition(){
+function getTouchPosition() {
   return createVector(touches[0].x, touches[0].y);
+}
+
+function updateBackgroundColor() {
+  if (isTracing) {
+    background("green");
+  } else {
+    background("red");
+  }
 }
