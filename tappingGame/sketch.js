@@ -61,7 +61,6 @@ function setup() {
     if (pause == false) {
       noLoop();
       pause = true;
-      
     } else {
       loop();
       pause = false;
@@ -70,20 +69,22 @@ function setup() {
 
   muteButton = createButton("MUTE");
   muteButton.id("myButton");
-  muteButton.class("reset");
+  muteButton.class("pause");
   muteButton.style("background-color", color(254, 245, 218));
   muteButton.style("font-family", "Palatino");
-  muteButton.position(0, 225);
+  muteButton.position(0, 150);
 
-  muteButton.mousePressed(() => {
+  muteButton.touchStarted(() => {
     if (backgroundMusic.isPlaying()) {
       backgroundMusic.pause();
       mute = true;
-    }else{
+      muteButton.style("background-color", color("red"));
+    } else {
       if (!mute) {
         backgroundMusic.loop();
       }
       mute = false;
+      muteButton.style("background-color", color(254, 245, 218));
     }
   });
 }
