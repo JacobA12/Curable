@@ -25,6 +25,7 @@ let tryAgainSound;
 let tryAgainSound2;
 let backgroundMusic;
 let lego;
+let mute = false;
 
 function preload() {
   victorySound = loadSound("../assets/victorySound.wav");
@@ -36,7 +37,9 @@ function preload() {
 }
 function setup() {
   soundFormats("mp3", "ogg", "wav");
-  lego.play();
+  if (!mute) {
+    lego.play();
+  }
   backgroundMusic.loop();
 
   homeButton = createButton("Home");
@@ -47,6 +50,23 @@ function setup() {
   homeButton.position(0,0);
   homeButton.mousePressed(() => {
     window.location.href = "../index.html";
+  });
+
+  muteButton = createButton("MUTE");
+  muteButton.id("myButton");
+  muteButton.class("reset");
+  muteButton.style("background-color", color(254, 245, 218));
+  muteButton.style("font-family", "Palatino");
+  muteButton.position(0, 225);
+
+  muteButton.mousePressed(() => {
+    if (backgroundMusic.isPlaying()) {
+      backgroundMusic.pause();
+      mute = true;
+    }else{
+      backgroundMusic.loop();
+      mute = false;
+    }
   });
 }
 
@@ -80,9 +100,13 @@ quoteInputElement.addEventListener("input", () => {
     if (wpm >= levelRequirements[currentLevel - 1]) {
       currentLevel++;
       levelNumElement.innerText = currentLevel;
-      victorySound2.play();
+      if (!mute) {
+        victorySound2.play();
+      }
     } else {
-      tryAgainSound2.play();
+      if (!mute) {
+        tryAgainSound2.play();
+      }
     }
   } //once the foreach loop completes, this will be true allowing for the next quote to be generated
   wordsTyped = 0;

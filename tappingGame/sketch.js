@@ -10,6 +10,9 @@ let points = 0;
 let currentLevel = 1;
 let timerDeduction = 1 / 60;
 let homeButton;
+let pause;
+
+let mute = false;
 
 //speed and direction of ball
 let dx = 0;
@@ -33,7 +36,9 @@ function setup() {
 
   object = createVector(random(width), random(height));
   object2 = createVector(random(width), random(height));
-  lego.play();
+  if (!mute) {
+    lego.play();
+  }
   backgroundMusic.loop();
 
   homeButton = createButton("Home");
@@ -44,6 +49,42 @@ function setup() {
   homeButton.position(0, 0);
   homeButton.touchStarted(() => {
     window.location.href = "../index.html";
+  });
+
+  pauseButton = createButton("Pause");
+  pauseButton.id("myButton");
+  pauseButton.class("pause");
+  pauseButton.style("background-color", color(254, 245, 218));
+  pauseButton.style("font-family", "Palatino");
+  pauseButton.position(0, 75);
+  pauseButton.touchStarted(() => {
+    if (pause == false) {
+      noLoop();
+      pause = true;
+      
+    } else {
+      loop();
+      pause = false;
+    }
+  });
+
+  muteButton = createButton("MUTE");
+  muteButton.id("myButton");
+  muteButton.class("reset");
+  muteButton.style("background-color", color(254, 245, 218));
+  muteButton.style("font-family", "Palatino");
+  muteButton.position(0, 225);
+
+  muteButton.mousePressed(() => {
+    if (backgroundMusic.isPlaying()) {
+      backgroundMusic.pause();
+      mute = true;
+    }else{
+      if (!mute) {
+        backgroundMusic.loop();
+      }
+      mute = false;
+    }
   });
 }
 
@@ -60,7 +101,9 @@ function draw() {
   //timer runs out
   if (timer <= 0) {
     text("stop", 200, 200);
-    wrong.play();
+    if (!mute) {
+      wrong.play();
+    }
     noLoop();
   }
   if (timer <= timer / 2) {
@@ -95,6 +138,14 @@ function draw() {
   text("Current Level:", 415, 575);
 
   nextLevel();
+
+  if (pause) {
+    fill(255, 0, 0);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLD);
+    text("PAUSED", width / 2, height / 2);
+  }
 }
 
 function touchStarted() {
@@ -107,7 +158,9 @@ function touchStarted() {
       object = createVector(random(width), random(height));
       points++;
       timer += 0.5;
-      right.play();
+      if (!mute) {
+        right.play();
+      }
     }
   }
   return false;

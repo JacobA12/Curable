@@ -7,6 +7,8 @@ let touchPos;
 let homeButton;
 let timer = 0;
 let timeAddition = 1 / 60;
+let pause;
+let mute = false;
 
 let backgroundMusic;
 let offTrack;
@@ -26,7 +28,9 @@ let v3;
 function setup() {
   createCanvas(600, 600);
   soundFormats("mp3", "ogg", "wav");
-  lego.play();
+  if (!mute) {
+    lego.play();
+  }
   v1 = createVector(300, 50);
   v2 = createVector(100, 500);
   v3 = createVector(500, 500);
@@ -41,6 +45,38 @@ function setup() {
   homeButton.position(0, 0);
   homeButton.touchStarted(() => {
     window.location.href = "../index.html";
+  });
+
+  pauseButton = createButton("Pause");
+  pauseButton.id("myButton");
+  pauseButton.class("pause");
+  pauseButton.style("background-color", color(254, 245, 218));
+  pauseButton.style("font-family", "Palatino");
+  pauseButton.position(0, 75);
+  pauseButton.touchStarted(() => {
+    if (pause == false) {
+      noLoop();
+      pause = true;
+      
+    } else {
+      loop();
+      pause = false;
+    }
+  });
+
+  muteButton = createButton("MUTE");
+  muteButton.id("myButton");
+  muteButton.class("reset");
+  muteButton.style("background-color", color(254, 245, 218));
+  muteButton.style("font-family", "Palatino");
+  muteButton.position(0, 225);
+
+  muteButton.touchStarted(() => {
+    if (mute) {
+      mute = false;
+    }else{
+      mute = true;
+    }
   });
 }
 
@@ -60,6 +96,15 @@ function draw() {
   stroke(127, 63, 120);
   strokeWeight(17);
   createShape(currentLevel);
+
+  if (pause) {
+    strokeWeight(0);
+    fill(255, 0, 0);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLD);
+    text("PAUSED", width / 2, height / 2);
+  }
 }
 
 function touchStarted() {
@@ -75,7 +120,8 @@ function touchMoved() {
 }
 
 function touchEnded() {
-  isTracing = false;
+  backgroundMusic.pause();
+  
 }
 
 function createShape(currentLevel) {
@@ -129,15 +175,15 @@ function getTouchPosition() {
 function updateBackgroundColor() {
   if (isTracing) {
     background("green");
-    if (!backgroundMusic.isPlaying()) {
+    if (!backgroundMusic.isPlaying() && !mute) {
       backgroundMusic.play();
     }
   } else {
     background("red");
-    if (!offTrack.isPlaying() && backgroundMusic.isPlaying()) {
+    if (!offTrack.isPlaying() && backgroundMusic.isPlaying() && !mute) {
       backgroundMusic.pause();
       offTrack.play();
-    } else if (!offTrack.isPlaying()) {
+    } else if (!offTrack.isPlaying() && !mute) {
       offTrack.play();
     }
   }

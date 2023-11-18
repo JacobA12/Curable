@@ -12,6 +12,7 @@ let pause = false;
 let homeButton;
 let resetButton;
 let pauseButton;
+let mute = false;
 
 //sound declaration
 let victorySound;
@@ -80,6 +81,23 @@ function setup() {
       pause = false;
     }
   });
+
+  muteButton = createButton("MUTE");
+  muteButton.id("myButton");
+  muteButton.class("reset");
+  muteButton.style("background-color", color(254, 245, 218));
+  muteButton.style("font-family", "Palatino");
+  muteButton.position(0, 225);
+
+  muteButton.mousePressed(() => {
+    if (backgroundMusic.isPlaying()) {
+      backgroundMusic.pause();
+      mute = true;
+    }else{
+      backgroundMusic.loop();
+      mute = false;
+    }
+  });
 }
 
 function pickLocation() {
@@ -103,7 +121,9 @@ function draw() {
   //checks all states
   if (s.eat(food)) {
     pickLocation();
-    victorySound2.play();
+    if (!mute) {
+      victorySound2.play();
+    }
   }
   s.death();
   s.update();
@@ -134,25 +154,25 @@ function keyPressed() {
     return;
   }
   if (keyCode === UP_ARROW || keyCode === 87) {
-    if (s.yspeed != -1 && s.yspeed != 1) {
+    if (s.yspeed != -1 && s.yspeed != 1 && !mute) {
       moveSound.play();
     }
     s.dir(0, -1);
     directionChanged = true;
   } else if (keyCode === DOWN_ARROW || keyCode === 83) {
-    if (s.yspeed != 1 && s.yspeed != -1) {
+    if (s.yspeed != 1 && s.yspeed != -1 && !mute) {
       moveSound.play();
     }
     s.dir(0, 1);
     directionChanged = true;
   } else if (keyCode === RIGHT_ARROW || keyCode === 68) {
-    if (s.xspeed != 1 && s.xspeed != -1) {
+    if (s.xspeed != 1 && s.xspeed != -1 && !mute) {
       moveSound.play();
     }
     s.dir(1, 0);
     directionChanged = true;
   } else if (keyCode === LEFT_ARROW || keyCode === 65) {
-    if (s.xspeed != -1 && s.xspeed != 1) {
+    if (s.xspeed != -1 && s.xspeed != 1 && !mute) {
       //will not play sound twice if already going that direction
       moveSound.play();
     }
