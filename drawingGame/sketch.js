@@ -18,7 +18,7 @@ function setup() {
 }
 
 function draw() {
-  background("white");
+  background("gray");
   touchMoved();
 
   fill(204, 101, 192, 127);
@@ -28,11 +28,6 @@ function draw() {
     stroke(2);
     fill("gray");
     ellipse(touches[0].x, touches[0].y, 40, 40, 45);
-  }
-
-  if (!isTracing) {
-    // Add this block
-    score--;
   }
 }
 
@@ -49,46 +44,11 @@ function touchMoved() {
   if (touches.length > 0) {
     let point = createVector(touches[0].x, touches[0].y);
     drawnLine = line(touches[0].x, touches[0].y, pmouseX, pmouseY);
-
-    // Calculate the distance from the point to each line of the triangle
-    let d1 = distToSegment(point, v1, v2);
-    let d2 = distToSegment(point, v2, v3);
-    let d3 = distToSegment(point, v3, v1);
-
-    // If the point is close to any of the lines, the user is tracing the shape
-    if (d1 < threshold || d2 < threshold || d3 < threshold) {
-      isTracing = true;
-    } else {
-      isTracing = false;
-    }
   }
 }
 
 function touchEnded() {
-  calculateScore();
-  isTracing = false; // Add this line
-}
-
-function calculateScore() {
-  if (isTracing) {
-    // The user is tracing the shape correctly, so the score remains the same
-  } else {
-    // The user deviated from the trace, so they lose points
-    score--;
-  }
-  console.log(score);
-}
-function distToSegment(point, v, w) {
-  let l2 = distSq(v, w);
-  if (l2 === 0) return distSq(point, v);
-  let t = ((point.x - v.x) * (w.x - v.x) + (point.y - v.y) * (w.y - v.y)) / l2;
-  t = max(0, min(1, t));
-  return sqrt(
-    distSq(point, createVector(v.x + t * (w.x - v.x), v.y + t * (w.y - v.y)))
-  );
-}
-function distSq(v, w) {
-  return pow(v.x - w.x, 2) + pow(v.y - w.y, 2);
+  isTracing = false;
 }
 
 function createShape() {
