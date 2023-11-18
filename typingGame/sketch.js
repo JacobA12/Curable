@@ -45,27 +45,29 @@ function setup() {
   homeButton = createButton("Home");
   homeButton.id("myButton");
   homeButton.class("home");
-  homeButton.style("background-color", color(254,245,218));
-  homeButton.style('font-family','Palatino');
-  homeButton.position(0,0);
+  homeButton.style("background-color", color(254, 245, 218));
+  homeButton.style("font-family", "Palatino");
+  homeButton.position(0, 0);
   homeButton.mousePressed(() => {
     window.location.href = "../index.html";
   });
 
   muteButton = createButton("MUTE");
   muteButton.id("myButton");
-  muteButton.class("reset");
+  muteButton.class("mute");
   muteButton.style("background-color", color(254, 245, 218));
   muteButton.style("font-family", "Palatino");
-  muteButton.position(0, 225);
+  muteButton.position(0, 75);
 
   muteButton.mousePressed(() => {
     if (backgroundMusic.isPlaying()) {
       backgroundMusic.pause();
       mute = true;
-    }else{
+      muteButton.style("background-color", color("red"));
+    } else {
       backgroundMusic.loop();
       mute = false;
+      muteButton.style("background-color", color(254, 245, 218));
     }
   });
 }

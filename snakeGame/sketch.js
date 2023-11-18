@@ -93,9 +93,12 @@ function setup() {
     if (backgroundMusic.isPlaying()) {
       backgroundMusic.pause();
       mute = true;
+      muteButton.style("background-color", color("red"));
+
     }else{
       backgroundMusic.loop();
       mute = false;
+      muteButton.style("background-color", color(254, 245, 218));
     }
   });
 }
