@@ -42,7 +42,7 @@ function setup() {
   homeButton.style("background-color", color(254, 245, 218));
   homeButton.style("font-family", "Palatino");
   homeButton.position(0, 0);
-  homeButton.mousePressed(() => {
+  homeButton.touchStarted(() => {
     window.location.href = "../index.html";
   });
 }
@@ -110,6 +110,7 @@ function touchStarted() {
       right.play();
     }
   }
+  return false;
 }
 
 function nextLevel() {
