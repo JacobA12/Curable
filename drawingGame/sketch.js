@@ -5,6 +5,16 @@ let isTracing = false;
 let threshold = 10;
 let touchPos;
 
+let backgroundMusic;
+let offTrack;
+let lego;
+
+function preload(){
+  offTrack = loadSound("../assets/offTrack2.wav");
+  lego = loadSound("../assets/lego.mp3");
+  backgroundMusic = loadSound("../assets/backgroundMusic.wav")
+}
+
 // Triangle vertices
 let v1;
 let v2;
@@ -12,10 +22,13 @@ let v3;
 
 function setup() {
   createCanvas(600, 600);
+  soundFormats("mp3", "ogg", "wav");
+  lego.play();
   v1 = createVector(300, 50);
   v2 = createVector(100, 500);
   v3 = createVector(500, 500);
   targetShape = createShape();
+  frameRate(5);
 }
 
 function draw() {
@@ -100,7 +113,16 @@ function getTouchPosition() {
 function updateBackgroundColor() {
   if (isTracing) {
     background("green");
+    if (!backgroundMusic.isPlaying()) {
+      backgroundMusic.play();
+    }
   } else {
     background("red");
+    if (!offTrack.isPlaying() && backgroundMusic.isPlaying()) {
+      backgroundMusic.stop();
+      offTrack.play();
+    } else if (!offTrack.isPlaying()) {
+      offTrack.play();
+    }
   }
 }

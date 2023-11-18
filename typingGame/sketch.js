@@ -24,6 +24,7 @@ let victorySound2;
 let tryAgainSound;
 let tryAgainSound2;
 let backgroundMusic;
+let lego;
 
 function preload() {
   victorySound = loadSound("../assets/victorySound.wav");
@@ -31,9 +32,11 @@ function preload() {
   tryAgainSound = loadSound("../assets/tryAgainSound.wav");
   tryAgainSound2 = loadSound("../assets/tryAgainSound2.wav");
   backgroundMusic = loadSound("../assets/jacob_game_lol.wav");
+  lego = loadSound("../assets/lego.mp3");
 }
 function setup() {
   soundFormats("mp3", "ogg", "wav");
+  lego.play();
   backgroundMusic.loop();
 
   homeButton = createButton("Home");

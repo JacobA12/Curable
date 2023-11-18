@@ -18,34 +18,37 @@ let dy = 0;
 let wrong;
 let right;
 let backgroundMusic;
+let lego;
 
 function preload() {
   wrong = loadSound("../assets/wrong.wav");
   right = loadSound("../assets/right.wav");
+  lego = loadSound("../assets/lego.mp3");
   backgroundMusic = loadSound("../assets/jacob_game_lol.wav");
 }
 
 function setup() {
-  soundFormats("wav");
+  soundFormats("wav", "mp3");
   createCanvas(600, 600);
 
   object = createVector(random(width), random(height));
   object2 = createVector(random(width), random(height));
+  lego.play();
   backgroundMusic.loop();
 
   homeButton = createButton("Home");
   homeButton.id("myButton");
   homeButton.class("home");
-  homeButton.style("background-color", color(254,245,218));
-  homeButton.style('font-family','Palatino');
-  homeButton.position(0,0);
+  homeButton.style("background-color", color(254, 245, 218));
+  homeButton.style("font-family", "Palatino");
+  homeButton.position(0, 0);
   homeButton.mousePressed(() => {
     window.location.href = "../index.html";
   });
 }
 
 function draw() {
-  background(254,245,218);
+  background(254, 245, 218);
 
   // Check if there's at least one touch point
   if (touches.length > 0) {
@@ -74,10 +77,6 @@ function draw() {
   ellipse(object.x, object.y, rad * scl);
 
   //second ball for level 2
-  if (currentLevel === 2) {
-    fill("blue");
-    ellipse(object2.x, object2.y, rad * scl);
-  }
 
   //change x and y of object here to make it move
   /* changeSpeed();
@@ -104,22 +103,11 @@ function touchStarted() {
     let dis = p5.Vector.dist(player, object);
     let dis2;
 
-    if (currentLevel === 2) {
-      dis2 = p5.Vector.dist(player, object2);
-    }
-
-    if (dis < rad) {
+    if (dis <= rad) {
       object = createVector(random(width), random(height));
       points++;
       timer += 0.5;
       right.play();
-    }
-    if (currentLevel === 2) {
-      if (dis2 < rad) {
-        object2 = createVector(random(width), random(height));
-        points += 2;
-        right.play();
-      }
     }
   }
 }
@@ -162,10 +150,6 @@ function drawWinningScreen() {
   textStyle(BOLD);
   text("Winner!", 200, 300);
 }
-
-
-
-
 
 //color change when ball is clicked
 //add two objects that need to be clicked

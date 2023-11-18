@@ -19,6 +19,7 @@ let tryAgainSound;
 let tryAgainSound2;
 let moveSound;
 let backgroundMusic;
+let lego;
 
 function preload() {
   victorySound = loadSound("../assets/victorySound.wav");
@@ -27,10 +28,12 @@ function preload() {
   tryAgainSound2 = loadSound("../assets/tryAgainSound2.wav");
   moveSound = loadSound("../assets/move.mp3");
   backgroundMusic = loadSound("../assets/jacob_game_lol.wav");
+  lego = loadSound("../assets/lego.mp3");
 }
 
 function setup() {
   soundFormats("mp3", "ogg", "wav");
+  lego.play();
   backgroundMusic.loop();
   createCanvas(600, 600);
   s = new Snake();
