@@ -11,6 +11,7 @@ let food;
 let pause = false;
 let homeButton;
 let resetButton;
+let pauseButton;
 
 //sound declaration
 let victorySound;
@@ -55,11 +56,29 @@ function setup() {
   resetButton = createButton("Reset Food");
   resetButton.id("myButton");
   resetButton.class("reset");
+  resetButton.style("background-color", color(254, 245, 218));
   resetButton.style("font-family", "Palatino");
-  resetButton.position(0, 75);
+  resetButton.position(0, 150);
 
   resetButton.mousePressed(() => {
     pickLocation();
+  });
+
+  pauseButton = createButton("Pause");
+  pauseButton.id("myButton");
+  pauseButton.class("pause");
+  pauseButton.style("background-color", color(254, 245, 218));
+  pauseButton.style("font-family", "Palatino");
+  pauseButton.position(0, 75);
+  pauseButton.mousePressed(() => {
+    if (pause == false) {
+      noLoop();
+      pause = true;
+      
+    } else {
+      loop();
+      pause = false;
+    }
   });
 }
 
@@ -97,6 +116,14 @@ function draw() {
   //draws obstacles
   for (let obstacle of obstacles) {
     obstacle.show();
+  }
+
+  if (pause) {
+    fill(255, 0, 0);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLD);
+    text("PAUSED", width / 2, height / 2);
   }
 }
 
@@ -235,14 +262,4 @@ function drawWinningScreen() {
   textStyle(BOLD);
   text("Winner!", 200, 300);
   noLoop();
-}
-
-function mousePressed(){ //bei click Pause, bei 2. click weiter
-  if(pause==false){
-    noLoop();
-    pause=true;
-  }else{
-    loop();
-    pause = false;
-  }
 }
