@@ -4,6 +4,9 @@ let currentLevel = 1;
 let isTracing = false;
 let threshold = 10;
 let touchPos;
+let homeButton;
+let timer = 0;
+let timeAddition = 1/60;
 
 let backgroundMusic;
 let offTrack;
@@ -29,10 +32,20 @@ function setup() {
   v3 = createVector(500, 500);
   targetShape = createShape();
   frameRate(5);
+
+  homeButton = createButton("Home");
+  homeButton.id("myButton");
+  homeButton.class("home");
+  homeButton.style("background-color", color(254, 245, 218));
+  homeButton.style("font-family", "Palatino");
+  homeButton.position(0, 0);
+  homeButton.mousePressed(() => {
+    window.location.href = "../index.html";
+  });
 }
 
 function draw() {
-  background("gray");
+  background("white");
   touchMoved();
 
   if (touches.length > 0) {
@@ -119,7 +132,7 @@ function updateBackgroundColor() {
   } else {
     background("red");
     if (!offTrack.isPlaying() && backgroundMusic.isPlaying()) {
-      backgroundMusic.stop();
+      backgroundMusic.pause();
       offTrack.play();
     } else if (!offTrack.isPlaying()) {
       offTrack.play();
