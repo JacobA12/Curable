@@ -1,6 +1,6 @@
 let targetShape;
 let score = 0;
-let currentLevel = 1;
+let currentLevel = 4;
 let isTracing = false;
 let touchPos;
 let homeButton;
@@ -15,11 +15,13 @@ let bestScore = 0;
 let backgroundMusic;
 let offTrack;
 let lego;
+let levelUp;
 
 function preload() {
   offTrack = loadSound("../assets/offTrack2.wav");
   lego = loadSound("../assets/lego.mp3");
   backgroundMusic = loadSound("../assets/backgroundMusic.wav");
+  levelUp = loadSound("../assets/victorySound.wav")
 }
 
 // Triangle vertices
@@ -91,6 +93,20 @@ function setup() {
       muteButton.style("background-color", color("red"));
     }
   });
+  
+  resetButton = createButton("Reset");
+    resetButton.id("myButton");
+    resetButton.class("pause");
+    resetButton.style("background-color", color(254, 245, 218));
+    resetButton.style("font-family", "Palatino");
+    resetButton.position(0, 225);
+    resetButton.touchStarted(() => {
+      currentLevel = 1;
+      scoreTimer = 0;
+      bestScore = 0;
+      timer = 5;
+      loop();
+    });  
 }
 
 function draw() {
@@ -112,12 +128,13 @@ function draw() {
 
   if (pause) {
     strokeWeight(0);
-    fill(255, 0, 0);
+    fill('black');
     textSize(60);
     textAlign(CENTER, CENTER);
     textStyle(BOLD);
     text("PAUSED", width / 2, height / 2);
   }
+  fill('black')
   strokeWeight(0);
   textStyle(BOLD);
   textSize(24);
@@ -133,9 +150,18 @@ function draw() {
     if (plusTimer > bestScore) {
       bestScore = plusTimer;
     }
+    levelUp.play();
     currentLevel++;
     timer = 5;
     plusTimer = 0;
+  }
+
+  if (currentLevel === 4) {
+    noLoop();
+    textSize(30);
+    fill('red')
+    
+    text("You completed all of the challenges!\nPress the Reset button to try again!", 50, 300);
   }
 }
 
@@ -149,6 +175,7 @@ function touchMoved() {
     line(touches[0].x, touches[0].y, pmouseX, pmouseY);
   }
 }
+
 
 function touchEnded() {
   backgroundMusic.pause();
@@ -211,22 +238,24 @@ function calculateScore() {
     timer -= timeSub;
     
   }
-  console.log("Score Timer:" + parseFloat(plusTimer.toFixed(1)));
-  console.log("Remaining Time:" + parseFloat(timer.toFixed(1)));
+  // console.log("Score Timer:" + parseFloat(plusTimer.toFixed(1)));
+  // console.log("Remaining Time:" + parseFloat(timer.toFixed(1)));
 }
 
 // Function to calculate the distance from a point to a line segment
 function distToSegment(p, v, w) {
   let l2 = distSq(v, w);
-  if (l2 == 0) return distSq(p, v);
-  let t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+  if (l2 == 0) return distSq(p, v); //if distance is 0 they are the same point
+  let t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2; //vector projection - dot product over magnitude
   t = max(0, min(1, t));
   return sqrt(
+    //object literals x,y
     distSq(p, { x: v.x + t * (w.x - v.x), y: v.y + t * (w.y - v.y) })
   );
 }
 
 // Function to calculate the square of the distance between two points
+//euclidean distance formula
 function distSq(v, w) {
   return pow(v.x - w.x, 2) + pow(v.y - w.y, 2);
 }
