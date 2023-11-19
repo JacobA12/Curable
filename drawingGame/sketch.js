@@ -1,6 +1,6 @@
 let targetShape;
 let score = 0;
-let currentLevel = 3;
+let currentLevel = 1;
 let isTracing = false;
 let threshold = 10;
 let touchPos;
@@ -155,20 +155,27 @@ function calculateScore() {
   let d2;
   let d3;
   let d4 = 11;
-  if (currentLevel === 1) {
-    d1 = distToSegment(touchPos, v1, v2);
-    d2 = distToSegment(touchPos, v2, v3);
-    d3 = distToSegment(touchPos, v3, v1);
-  } else if (currentLevel === 2) {
-    d1 = distToSegment(touchPos, q1, q2);
-    d2 = distToSegment(touchPos, q2, q3);
-    d3 = distToSegment(touchPos, q3, q4);
-    d4 = distToSegment(touchPos, q4, q1);
-  } else if (currentLevel === 3) {
-    d1 = distToSegment(touchPos, p1, p2);
-    d2 = distToSegment(touchPos, p2, p3);
-    d3 = distToSegment(touchPos, p3, p4);
-    d4 = distToSegment(touchPos, p4, p1);
+
+  switch (currentLevel) {
+    case 1:
+      d1 = distToSegment(touchPos, v1, v2);
+      d2 = distToSegment(touchPos, v2, v3);
+      d3 = distToSegment(touchPos, v3, v1);
+      break;
+    case 2:
+      d1 = distToSegment(touchPos, q1, q2);
+      d2 = distToSegment(touchPos, q2, q3);
+      d3 = distToSegment(touchPos, q3, q4);
+      d4 = distToSegment(touchPos, q4, q1);
+      break;
+    case 3:
+      d1 = distToSegment(touchPos, p1, p2);
+      d2 = distToSegment(touchPos, p2, p3);
+      d3 = distToSegment(touchPos, p3, p4);
+      d4 = distToSegment(touchPos, p4, p1);
+      break;
+    default:
+      break;
   }
 
   // Check if the touch is on the outline
