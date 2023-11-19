@@ -2,13 +2,15 @@ let targetShape;
 let score = 0;
 let currentLevel = 1;
 let isTracing = false;
-let threshold = 10;
 let touchPos;
 let homeButton;
-let timer = 0;
-let timeAddition = 1 / 60;
+let timer = 5;
+let plusTimer = 0;
+let timeAddition = 0.1;
+let timeSub = 0.1;
 let pause;
 let mute = false;
+let bestScore = 0;
 
 let backgroundMusic;
 let offTrack;
@@ -116,10 +118,29 @@ function draw() {
     textStyle(BOLD);
     text("PAUSED", width / 2, height / 2);
   }
+  strokeWeight(0);
+  textStyle(BOLD);
+  textSize(24);
+  text("Timer:", 405, 30);
+  text(parseFloat(timer.toFixed(1)), 485, 30);
+
+  text("Score Timer:", 405, 60);
+  text(parseFloat(plusTimer.toFixed(1)), 560, 60);
+
+  text("Best Score:", 405, 90);
+  text(parseFloat(bestScore.toFixed(1)), 545, 90);
+  if (timer <= 0) {
+    if (plusTimer > bestScore) {
+      bestScore = plusTimer;
+    }
+    currentLevel++;
+    timer = 5;
+    plusTimer = 0;
+  }
 }
 
 function touchStarted() {
-  isTracing = true;
+  
   return false;
 }
 
@@ -180,12 +201,18 @@ function calculateScore() {
 
   // Check if the touch is on the outline
   if (d1 <= 10 || d2 <= 10 || d3 <= 10 || d4 <= 10) {
-    console.log("Touch is on the outline");
+    // console.log("Touch is on the outline");
     isTracing = true;
+    plusTimer += timeAddition;
+    timer -= timeSub;
   } else {
-    console.log("Touch is not on the outline");
+    // console.log("Touch is not on the outline");
     isTracing = false;
+    timer -= timeSub;
+    
   }
+  console.log("Score Timer:" + parseFloat(plusTimer.toFixed(1)));
+  console.log("Remaining Time:" + parseFloat(timer.toFixed(1)));
 }
 
 // Function to calculate the distance from a point to a line segment
