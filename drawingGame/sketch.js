@@ -1,6 +1,6 @@
 let targetShape;
 let score = 0;
-let currentLevel = 1;
+let currentLevel = 3;
 let isTracing = false;
 let threshold = 10;
 let touchPos;
@@ -34,6 +34,16 @@ function setup() {
   v1 = createVector(300, 50);
   v2 = createVector(100, 500);
   v3 = createVector(500, 500);
+
+  q1 = createVector(170, 115);
+  q2 = createVector(380, 190);
+  q3 = createVector(450, 400);
+  q4 = createVector(100, 400);
+
+  p1 = createVector(300, 50);
+  p2 = createVector(450, 250);
+  p4 = createVector(150, 250);
+  p3 = createVector(300, 550);
   targetShape = createShape();
   frameRate(5);
 
@@ -115,7 +125,6 @@ function touchStarted() {
 
 function touchMoved() {
   if (touches.length > 0) {
-    let point = createVector(touches[0].x, touches[0].y);
     line(touches[0].x, touches[0].y, pmouseX, pmouseY);
   }
 }
@@ -129,7 +138,12 @@ function createShape(currentLevel) {
     case 1:
       triangle(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y);
       break;
-
+    case 2:
+      quad(q1.x, q1.y, q2.x, q2.y, q3.x, q3.y, q4.x, q4.y);
+      break;
+    case 3:
+      quad(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);
+      break;
     default:
       break;
   }
@@ -137,13 +151,28 @@ function createShape(currentLevel) {
 
 function calculateScore() {
   touchPos = getTouchPosition();
-
-  let d1 = distToSegment(touchPos, v1, v2);
-  let d2 = distToSegment(touchPos, v2, v3);
-  let d3 = distToSegment(touchPos, v3, v1);
+  let d1;
+  let d2;
+  let d3;
+  let d4 = 11;
+  if (currentLevel === 1) {
+    d1 = distToSegment(touchPos, v1, v2);
+    d2 = distToSegment(touchPos, v2, v3);
+    d3 = distToSegment(touchPos, v3, v1);
+  } else if (currentLevel === 2) {
+    d1 = distToSegment(touchPos, q1, q2);
+    d2 = distToSegment(touchPos, q2, q3);
+    d3 = distToSegment(touchPos, q3, q4);
+    d4 = distToSegment(touchPos, q4, q1);
+  } else if (currentLevel === 3) {
+    d1 = distToSegment(touchPos, p1, p2);
+    d2 = distToSegment(touchPos, p2, p3);
+    d3 = distToSegment(touchPos, p3, p4);
+    d4 = distToSegment(touchPos, p4, p1);
+  }
 
   // Check if the touch is on the outline
-  if (d1 <= 10 || d2 <= 10 || d3 <= 10) {
+  if (d1 <= 10 || d2 <= 10 || d3 <= 10 || d4 <= 10) {
     console.log("Touch is on the outline");
     isTracing = true;
   } else {
