@@ -1,6 +1,6 @@
 let targetShape;
 let score = 0;
-let currentLevel = 4;
+let currentLevel = 1;
 let isTracing = false;
 let touchPos;
 let homeButton;
