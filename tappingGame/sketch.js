@@ -10,6 +10,9 @@ let points = 0;
 let currentLevel = 1;
 let timerDeduction = 1 / 60;
 let homeButton;
+let pause;
+
+let mute = false;
 
 //speed and direction of ball
 let dx = 0;
@@ -18,34 +21,76 @@ let dy = 0;
 let wrong;
 let right;
 let backgroundMusic;
+let lego;
 
 function preload() {
   wrong = loadSound("../assets/wrong.wav");
   right = loadSound("../assets/right.wav");
+  lego = loadSound("../assets/lego.mp3");
   backgroundMusic = loadSound("../assets/jacob_game_lol.wav");
 }
 
 function setup() {
-  soundFormats("wav");
+  soundFormats("wav", "mp3");
   createCanvas(600, 600);
 
   object = createVector(random(width), random(height));
   object2 = createVector(random(width), random(height));
+  if (!mute) {
+    lego.play();
+  }
   backgroundMusic.loop();
 
   homeButton = createButton("Home");
   homeButton.id("myButton");
   homeButton.class("home");
-  homeButton.style("background-color", color(254,245,218));
-  homeButton.style('font-family','Palatino');
-  homeButton.position(0,0);
-  homeButton.mousePressed(() => {
+  homeButton.style("background-color", color(254, 245, 218));
+  homeButton.style("font-family", "Palatino");
+  homeButton.position(0, 0);
+  homeButton.touchStarted(() => {
     window.location.href = "../index.html";
+  });
+
+  pauseButton = createButton("Pause");
+  pauseButton.id("myButton");
+  pauseButton.class("pause");
+  pauseButton.style("background-color", color(254, 245, 218));
+  pauseButton.style("font-family", "Palatino");
+  pauseButton.position(0, 75);
+  pauseButton.touchStarted(() => {
+    if (pause == false) {
+      noLoop();
+      pause = true;
+    } else {
+      loop();
+      pause = false;
+    }
+  });
+
+  muteButton = createButton("MUTE");
+  muteButton.id("myButton");
+  muteButton.class("pause");
+  muteButton.style("background-color", color(254, 245, 218));
+  muteButton.style("font-family", "Palatino");
+  muteButton.position(0, 150);
+
+  muteButton.touchStarted(() => {
+    if (backgroundMusic.isPlaying()) {
+      backgroundMusic.pause();
+      mute = true;
+      muteButton.style("background-color", color("red"));
+    } else {
+      if (!mute) {
+        backgroundMusic.loop();
+      }
+      mute = false;
+      muteButton.style("background-color", color(254, 245, 218));
+    }
   });
 }
 
 function draw() {
-  background(254,245,218);
+  background(254, 245, 218);
 
   // Check if there's at least one touch point
   if (touches.length > 0) {
@@ -57,7 +102,9 @@ function draw() {
   //timer runs out
   if (timer <= 0) {
     text("stop", 200, 200);
-    wrong.play();
+    if (!mute) {
+      wrong.play();
+    }
     noLoop();
   }
   if (timer <= timer / 2) {
@@ -74,10 +121,6 @@ function draw() {
   ellipse(object.x, object.y, rad * scl);
 
   //second ball for level 2
-  if (currentLevel === 2) {
-    fill("blue");
-    ellipse(object2.x, object2.y, rad * scl);
-  }
 
   //change x and y of object here to make it move
   /* changeSpeed();
@@ -96,6 +139,14 @@ function draw() {
   text("Current Level:", 415, 575);
 
   nextLevel();
+
+  if (pause) {
+    fill(255, 0, 0);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLD);
+    text("PAUSED", width / 2, height / 2);
+  }
 }
 
 function touchStarted() {
@@ -104,24 +155,16 @@ function touchStarted() {
     let dis = p5.Vector.dist(player, object);
     let dis2;
 
-    if (currentLevel === 2) {
-      dis2 = p5.Vector.dist(player, object2);
-    }
-
-    if (dis < rad) {
+    if (dis <= rad * 2) {
       object = createVector(random(width), random(height));
       points++;
       timer += 0.5;
-      right.play();
-    }
-    if (currentLevel === 2) {
-      if (dis2 < rad) {
-        object2 = createVector(random(width), random(height));
-        points += 2;
+      if (!mute) {
         right.play();
       }
     }
   }
+  return false;
 }
 
 function nextLevel() {
@@ -139,7 +182,6 @@ function nextLevel() {
         timer = 5;
         points = 0;
       }
-      rad = 15 * 0.75;
       break;
     case 3:
       //add victory screen
@@ -162,10 +204,6 @@ function drawWinningScreen() {
   textStyle(BOLD);
   text("Winner!", 200, 300);
 }
-
-
-
-
 
 //color change when ball is clicked
 //add two objects that need to be clicked

@@ -8,9 +8,11 @@ let obstacles = [];
 let currentLevel = 1;
 let scl = 20;
 let food;
-
+let pause = false;
 let homeButton;
 let resetButton;
+let pauseButton;
+let mute = false;
 
 //sound declaration
 let victorySound;
@@ -19,6 +21,7 @@ let tryAgainSound;
 let tryAgainSound2;
 let moveSound;
 let backgroundMusic;
+let lego;
 
 function preload() {
   victorySound = loadSound("../assets/victorySound.wav");
@@ -27,10 +30,12 @@ function preload() {
   tryAgainSound2 = loadSound("../assets/tryAgainSound2.wav");
   moveSound = loadSound("../assets/move.mp3");
   backgroundMusic = loadSound("../assets/jacob_game_lol.wav");
+  lego = loadSound("../assets/lego.mp3");
 }
 
 function setup() {
   soundFormats("mp3", "ogg", "wav");
+  lego.play();
   backgroundMusic.loop();
   createCanvas(600, 600);
   s = new Snake();
@@ -49,14 +54,52 @@ function setup() {
     window.location.href = "../index.html";
   });
 
-  resetButton = createButton("Reset");
+  resetButton = createButton("Reset Food");
   resetButton.id("myButton");
   resetButton.class("reset");
+  resetButton.style("background-color", color(254, 245, 218));
   resetButton.style("font-family", "Palatino");
-  resetButton.position(0, 75);
+  resetButton.position(0, 225);
 
   resetButton.mousePressed(() => {
     pickLocation();
+  });
+
+  pauseButton = createButton("Pause");
+  pauseButton.id("myButton");
+  pauseButton.class("pause");
+  pauseButton.style("background-color", color(254, 245, 218));
+  pauseButton.style("font-family", "Palatino");
+  pauseButton.position(0, 75);
+  pauseButton.mousePressed(() => {
+    if (pause == false) {
+      noLoop();
+      pause = true;
+      
+    } else {
+      loop();
+      pause = false;
+    }
+  });
+
+  muteButton = createButton("MUTE");
+  muteButton.id("myButton");
+  muteButton.class("reset");
+  muteButton.style("background-color", color(254, 245, 218));
+  muteButton.style("font-family", "Palatino");
+  muteButton.position(0, 150);
+
+  muteButton.mousePressed(() => {
+    if (backgroundMusic.isPlaying()) {
+      backgroundMusic.pause();
+      mute = true;
+      muteButton.style("background-color", color("red"));
+
+    }else{
+      backgroundMusic.loop();
+      mute = false;
+      muteButton.style("background-color", color(254, 245, 218));
+    }
   });
 }
 
@@ -81,7 +124,9 @@ function draw() {
   //checks all states
   if (s.eat(food)) {
     pickLocation();
-    victorySound2.play();
+    if (!mute) {
+      victorySound2.play();
+    }
   }
   s.death();
   s.update();
@@ -95,6 +140,14 @@ function draw() {
   for (let obstacle of obstacles) {
     obstacle.show();
   }
+
+  if (pause) {
+    fill(255, 0, 0);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLD);
+    text("PAUSED", width / 2, height / 2);
+  }
 }
 
 //controls
@@ -104,25 +157,25 @@ function keyPressed() {
     return;
   }
   if (keyCode === UP_ARROW || keyCode === 87) {
-    if (s.yspeed != -1 && s.yspeed != 1) {
+    if (s.yspeed != -1 && s.yspeed != 1 && !mute) {
       moveSound.play();
     }
     s.dir(0, -1);
     directionChanged = true;
   } else if (keyCode === DOWN_ARROW || keyCode === 83) {
-    if (s.yspeed != 1 && s.yspeed != -1) {
+    if (s.yspeed != 1 && s.yspeed != -1 && !mute) {
       moveSound.play();
     }
     s.dir(0, 1);
     directionChanged = true;
   } else if (keyCode === RIGHT_ARROW || keyCode === 68) {
-    if (s.xspeed != 1 && s.xspeed != -1) {
+    if (s.xspeed != 1 && s.xspeed != -1 && !mute) {
       moveSound.play();
     }
     s.dir(1, 0);
     directionChanged = true;
   } else if (keyCode === LEFT_ARROW || keyCode === 65) {
-    if (s.xspeed != -1 && s.xspeed != 1) {
+    if (s.xspeed != -1 && s.xspeed != 1 && !mute) {
       //will not play sound twice if already going that direction
       moveSound.play();
     }

@@ -48,7 +48,9 @@ class Snake {
           //checks if level requirements are met
           nextLevel();
           scoreDisplayElement.innerText = 0; //sets score to 0
-          tryAgainSound2.play();
+          if (!mute) {
+            tryAgainSound2.play();
+          }
           this.x = 280; //resets position, speed, and size
           this.y = 40;
           this.total = 0;
@@ -64,7 +66,9 @@ class Snake {
         if (d < 1) {
           nextLevel();
           scoreDisplayElement.innerText = 0;
-          tryAgainSound2.play();
+          if (!mute) {
+            tryAgainSound2.play();
+          }
           this.x = 280;
           this.y = 40;
           this.total = 0;
