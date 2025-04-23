@@ -1,4 +1,5 @@
-const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random"; //pulls a random quote from the API
+const RANDOM_QUOTE_API_URL =
+  "https://quoteslate.vercel.app/api/quotes/random?minLength=200&maxLength=350"; //pulls a random quote from the API
 const quoteDisplayElement = document.getElementById("quoteDisplay");
 const quoteInputElement = document.getElementById("quoteInput");
 const timerElement = document.getElementById("timer");
@@ -118,7 +119,8 @@ async function getRandomQuote() {
   try {
     const response = await fetch(RANDOM_QUOTE_API_URL); //awaits response from API
     const data = await response.json(); //extracts JSON content
-    return data.content;
+    console.log(data.quote);
+    return data.quote;
   } catch (error) {
     console.error("Error fetching random quote:", error);
   }
